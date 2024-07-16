@@ -2,11 +2,11 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faShoppingCart,
-  faUser,
-  faSearch,
-  faHome,
-  faInfoCircle
+  faChevronDown
 } from '@fortawesome/free-solid-svg-icons'
+
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
+
 import {
   faFacebook,
   faInstagram,
@@ -15,13 +15,11 @@ import {
 
 library.add(
   faShoppingCart,
-  faUser,
-  faSearch,
-  faHome,
-  faInfoCircle,
   faFacebook,
   faInstagram,
-  faLine
+  faLine,
+  faChevronDown,
+  faHeart
 )
 </script>
 <template>
