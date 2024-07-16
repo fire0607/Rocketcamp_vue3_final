@@ -25,8 +25,7 @@
           <a class="nav-item nav-link me-4" href="./product.html">Product</a>
           <a class="nav-item nav-link me-4" href="./detail.html">Detail</a>
           <a class="nav-item nav-link" href="./cart.html"
-            ><i class="fas fa-shopping-cart"></i
-          ></a>
+            ><font-awesome-icon :icon="['fas', 'shopping-cart']" /></a>
         </div>
       </div>
     </nav>
@@ -61,7 +60,7 @@
                         type="button"
                         id="button-addon1"
                       >
-                        <i class="fas fa-minus"></i>
+                        <font-awesome-icon :icon="['fas', 'minus']" />
                       </button>
                     </div>
                     <input
@@ -78,7 +77,7 @@
                         type="button"
                         id="button-addon2"
                       >
-                        <i class="fas fa-plus"></i>
+                        <font-awesome-icon :icon="['fas', 'plus']" />
                       </button>
                     </div>
                   </div>
@@ -87,7 +86,7 @@
                   <p class="mb-0 ms-auto">NT$12,000</p>
                 </td>
                 <td class="border-0 align-middle">
-                  <i class="fas fa-times"></i>
+                  <font-awesome-icon :icon="['fas', 'times']" />
                 </td>
               </tr>
               <tr class="border-bottom">
@@ -107,7 +106,7 @@
                         type="button"
                         id="button-addon1"
                       >
-                        <i class="fas fa-minus"></i>
+                        <font-awesome-icon :icon="['fas', 'minus']" />
                       </button>
                     </div>
                     <input
@@ -124,7 +123,7 @@
                         type="button"
                         id="button-addon2"
                       >
-                        <i class="fas fa-plus"></i>
+                        <font-awesome-icon :icon="['fas', 'plus']" />
                       </button>
                     </div>
                   </div>
@@ -133,7 +132,7 @@
                   <p class="mb-0 ms-auto">NT$12,000</p>
                 </td>
                 <td class="border-0 align-middle">
-                  <i class="fas fa-times"></i>
+                  <font-awesome-icon :icon="['fas', 'times']" />
                 </td>
               </tr>
             </tbody>
@@ -152,7 +151,7 @@
                 type="button"
                 id="button-addon2"
               >
-                <i class="fas fa-paper-plane"></i>
+              <font-awesome-icon :icon="['fas', 'paper-plane']" />
               </button>
             </div>
           </div>
@@ -319,16 +318,14 @@
         <ul class="d-flex list-unstyled mb-0 h4">
           <li>
             <a href="#" class="text-white mx-3"
-              ><i class="fab fa-facebook"></i
-            ></a>
+              ><font-awesome-icon :icon="['fab', 'facebook']" /></a>
           </li>
           <li>
             <a href="#" class="text-white mx-3"
-              ><i class="fab fa-instagram"></i
-            ></a>
+              ><font-awesome-icon :icon="['fab', 'instagram']" /></a>
           </li>
           <li>
-            <a href="#" class="text-white ms-3"><i class="fab fa-line"></i></a>
+            <a href="#" class="text-white ms-3"><font-awesome-icon :icon="['fab', 'line']" /></a>
           </li>
         </ul>
       </div>

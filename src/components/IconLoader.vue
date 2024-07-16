@@ -4,7 +4,9 @@ import {
   faShoppingCart,
   faChevronDown,
   faMinus,
-  faPlus
+  faPlus,
+  faTimes,
+  faPaperPlane
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
@@ -23,7 +25,9 @@ library.add(
   faChevronDown,
   faHeart,
   faMinus,
-  faPlus
+  faPlus,
+  faTimes,
+  faPaperPlane
 )
 </script>
 <template>
