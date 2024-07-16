@@ -1,9 +1,9 @@
 <script setup>
-import ProductsView from '../components/ProductsView.vue'
+import ProductsDetail from '../components/ProductsDetail.vue'
 </script>
 
 <template>
-  <ProductsView />
+  <ProductsDetail />
 </template>
 
 <style scoped lang="scss"></style>
