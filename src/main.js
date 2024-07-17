@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/all.scss'
 import IconLoader from './components/IconLoader.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import 'swiper/css'
 
 const app = createApp(App)
 app.component('IconLoader', IconLoader)
