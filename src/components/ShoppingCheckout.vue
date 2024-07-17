@@ -9,19 +9,15 @@
             class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-end w-100 mt-md-0 mt-4"
           >
             <li class="me-md-6 me-3 position-relative custom-step-line">
-              <i
-                class="fas fa-check-circle d-md-inline d-block text-center"
-              ></i>
+              <font-awesome-icon :icon="['fas', 'circle-check']" class="d-md-inline d-block text-center" />
               <span class="text-nowrap">Lorem ipsum</span>
             </li>
             <li class="me-md-6 me-3 position-relative custom-step-line">
-              <i
-                class="fas fa-check-circle d-md-inline d-block text-center"
-              ></i>
+              <font-awesome-icon :icon="['fas', 'circle-check']" class="d-md-inline d-block text-center" />
               <span class="text-nowrap">Lorem ipsum</span>
             </li>
             <li>
-              <i class="fas fa-dot-circle d-md-inline d-block text-center"></i>
+              <font-awesome-icon :icon="['fas', 'circle-dot']" class="d-md-inline d-block text-center" />
               <span class="text-nowrap">Lorem ipsum</span>
             </li>
           </ul>
@@ -137,7 +133,7 @@
           class="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100"
         >
           <a href="./product.html" class="text-dark mt-md-0 mt-3"
-            ><i class="fas fa-chevron-left me-2"></i> Lorem ipsum</a
+            ><font-awesome-icon :icon="['fas', 'chevron-left']" class="me-2"/> Lorem ipsum</a
           >
           <a href="./checkout-1.html" class="btn btn-dark py-3 px-7"
             >Lorem ipsum</a

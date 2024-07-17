@@ -25,8 +25,8 @@
           <a class="nav-item nav-link me-4" href="./product.html">Product</a>
           <a class="nav-item nav-link me-4" href="./detail.html">Detail</a>
           <a class="nav-item nav-link" href="./cart.html"
-            ><i class="fas fa-shopping-cart"></i
-          ></a>
+            ><font-awesome-icon :icon="['fas', 'shopping-cart']"
+          /></a>
         </div>
       </div>
     </nav>
@@ -67,7 +67,7 @@
                 class="d-flex justify-content-between align-items-center pe-1"
               >
                 <h4 class="mb-0">Lorem ipsum</h4>
-                <i class="fas fa-chevron-down"></i>
+                <font-awesome-icon :icon="['fas', 'chevron-down']" />
               </div>
             </div>
             <div
@@ -108,7 +108,7 @@
                 class="d-flex justify-content-between align-items-center pe-1"
               >
                 <h4 class="mb-0">Lorem ipsum</h4>
-                <i class="fas fa-chevron-down"></i>
+                <font-awesome-icon :icon="['fas', 'chevron-down']" />
               </div>
             </div>
             <div
@@ -149,7 +149,7 @@
                 class="d-flex justify-content-between align-items-center pe-1"
               >
                 <h4 class="mb-0">Lorem ipsum</h4>
-                <i class="fas fa-chevron-down"></i>
+                <font-awesome-icon :icon="['fas', 'chevron-down']" />
               </div>
             </div>
             <div
@@ -191,10 +191,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -215,10 +216,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -239,10 +241,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -263,10 +266,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -287,10 +291,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -311,10 +316,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -335,10 +341,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -359,10 +366,11 @@
                 alt="..."
               />
               <a href="#" class="text-dark">
-                <i
-                  class="far fa-heart position-absolute"
+                <font-awesome-icon
+                  :icon="['far', 'heart']"
+                  class="position-absolute"
                   style="right: 16px; top: 16px"
-                ></i>
+                />
               </a>
               <div class="card-body p-0">
                 <h4 class="mb-0 mt-3">
@@ -424,16 +432,18 @@
         <ul class="d-flex list-unstyled mb-0 h4">
           <li>
             <a href="#" class="text-white mx-3"
-              ><i class="fab fa-facebook"></i
-            ></a>
+              ><font-awesome-icon :icon="['fab', 'facebook']"
+            /></a>
           </li>
           <li>
             <a href="#" class="text-white mx-3"
-              ><i class="fab fa-instagram"></i
-            ></a>
+              ><font-awesome-icon :icon="['fab', 'instagram']"
+            /></a>
           </li>
           <li>
-            <a href="#" class="text-white ms-3"><i class="fab fa-line"></i></a>
+            <a href="#" class="text-white ms-3"
+              ><font-awesome-icon :icon="['fab', 'line']"
+            /></a>
           </li>
         </ul>
       </div>

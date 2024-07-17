@@ -1,9 +1,9 @@
 <script setup>
-import IndexPage from '../components/IndexPage.vue'
+import ShoppingCheckout2 from '../components/ShoppingCheckout2.vue'
 </script>
 
 <template>
-  <IndexPage />
+  <ShoppingCheckout2 />
 </template>
 
 <style scoped lang="scss"></style>
