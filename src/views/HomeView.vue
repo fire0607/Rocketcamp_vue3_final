@@ -1,9 +1,9 @@
 <script setup>
-import ShoppingCheckout2 from '../components/ShoppingCheckout2.vue'
+import ShoppingCart from '../components/ShoppingCart.vue'
 </script>
 
 <template>
-  <ShoppingCheckout2 />
+  <ShoppingCart />
 </template>
 
 <style scoped lang="scss"></style>

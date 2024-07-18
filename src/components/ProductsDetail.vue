@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import SwiperSlider from '../components/SwiperSlider.vue'
+</script>
+
 <template>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light px-0">
@@ -152,95 +155,7 @@
       </div>
     </div>
     <h3 class="fw-bold">Lorem ipsum dolor sit amet</h3>
-    <div class="swiper-container mt-4 mb-5">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="card border-0 mb-4 position-relative position-relative">
-            <img
-              src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-              class="card-img-top rounded-0"
-              alt="..."
-            />
-            <a href="#" class="text-dark"> </a>
-            <div class="card-body p-0">
-              <h4 class="mb-0 mt-3"><a href="#">Lorem ipsum</a></h4>
-              <p class="card-text mb-0">
-                NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-              </p>
-              <p class="text-muted mt-3"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <SwiperSlider />
   </div>
   <div class="bg-light py-4">
     <div class="container">
