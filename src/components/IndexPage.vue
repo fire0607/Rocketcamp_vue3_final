@@ -1,6 +1,9 @@
-<script setup></script>
+<script setup>
+import TheNavbar from './TheNavbar.vue'
+</script>
 
 <template>
+  <BaseLayout :show-navbar="false" :show-footer="true" container-class="my-custom-container">
   <div class="position-relative">
     <div
       class="position-absolute"
@@ -15,6 +18,7 @@
       "
     ></div>
     <div class="container d-flex flex-column" style="min-height: 100vh">
+      <TheNavbar />
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
           <h2>Lorem ipsum.</h2>
@@ -188,6 +192,7 @@
       </div>
     </div>
   </div>
+  </BaseLayout>
 </template>
 
 <style scoped></style>
