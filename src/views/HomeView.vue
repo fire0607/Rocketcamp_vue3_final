@@ -1,9 +1,9 @@
 <script setup>
-import IndexPage from '../components/IndexPage.vue'
+import ProductsView from '../components/ProductsView.vue'
 </script>
 
 <template>
-  <IndexPage />
+  <ProductsView />
 </template>
 
 <style scoped lang="scss"></style>
