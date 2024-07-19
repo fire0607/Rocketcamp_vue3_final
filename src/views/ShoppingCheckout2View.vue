@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-md-10">
         <nav class="navbar navbar-expand-lg navbar-light px-0">
-          <a class="navbar-brand" href="./index.html">Navbar</a>
+          <router-link to="/" class="navbar-brand">Navbar</router-link>
           <ul
             class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-end w-100 mt-md-0 mt-4"
           >
@@ -228,12 +228,8 @@
         <div
           class="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100"
         >
-          <a href="./product.html" class="text-dark mt-md-0 mt-3"
-            ><font-awesome-icon :icon="['fas', 'chevron-left']" class="me-2"/> Lorem ipsum</a
-          >
-          <a href="./checkout-success.html" class="btn btn-dark py-3 px-7"
-            >Lorem ipsum</a
-          >
+        <router-link to="/products" class="text-dark mt-md-0 mt-3"><font-awesome-icon :icon="['fas', 'chevron-left']" class="me-2"/> Lorem ipsum</router-link>
+        <router-link to="/success" class="btn btn-dark py-3 px-7">Lorem ipsum</router-link>
         </div>
       </div>
     </div>
