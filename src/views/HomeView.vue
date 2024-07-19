@@ -1,9 +1,9 @@
 <script setup>
-import ShoppingCart from '../components/ShoppingCart.vue'
+import IndexPage from './IndexPageView.vue'
 </script>
 
 <template>
-  <ShoppingCart />
+  <IndexPage />
 </template>
 
 <style scoped lang="scss"></style>
