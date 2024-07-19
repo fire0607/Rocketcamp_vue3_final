@@ -32,17 +32,17 @@ const routes = [
   {
     path: '/checkout',
     name: 'ShoppingCheckout',
-    component: ShoppingCheckoutView,
-    children: [{
-      path: 'checkout2',
-      name: 'ShoppingCheckout2',
-      component: ShoppingCheckout2View
-    },
-    {
-      path: 'success',
-      name: 'ShoppingCheckoutSuccess',
-      component: ShoppingCheckoutSuccessView
-    }]
+    component: ShoppingCheckoutView
+  },
+  {
+    path: '/checkout2',
+    name: 'ShoppingCheckout2',
+    component: ShoppingCheckout2View
+  },
+  {
+    path: '/success',
+    name: 'ShoppingCheckoutSuccess',
+    component: ShoppingCheckoutSuccessView
   },
   {
     path: '/:pathMatch(.*)*',
