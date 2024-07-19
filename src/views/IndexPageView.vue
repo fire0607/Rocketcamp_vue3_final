@@ -26,7 +26,7 @@ import TheNavbar from '../components/TheNavbar.vue'
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod.
           </p>
-          <button class="btn btn-dark rounded-0 mt-6">Lorem ipsum.</button>
+          <router-link to="/products" class="btn btn-dark rounded-0 mt-6">Lorem ipsum.</router-link>
         </div>
       </div>
     </div>
