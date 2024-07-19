@@ -34,12 +34,12 @@ const routes = [
     name: 'ShoppingCheckout',
     component: ShoppingCheckoutView,
     children: [{
-      path: '/checkout2',
+      path: 'checkout2',
       name: 'ShoppingCheckout2',
       component: ShoppingCheckout2View
     },
     {
-      path: '/success',
+      path: 'success',
       name: 'ShoppingCheckoutSuccess',
       component: ShoppingCheckoutSuccessView
     }]
