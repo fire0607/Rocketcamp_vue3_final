@@ -161,9 +161,7 @@ import SwiperSlider from '../components/SwiperSlider.vue'
                 <p class="mb-0 h4 fw-bold">Total</p>
                 <p class="mb-0 h4 fw-bold">NT$24,000</p>
               </div>
-              <a href="./checkout.html" class="btn btn-dark w-100 mt-4"
-                >Lorem ipsum</a
-              >
+              <router-link to="/checkout" class="btn btn-dark w-100 mt-4">Lorem ipsum</router-link>
             </div>
           </div>
         </div>

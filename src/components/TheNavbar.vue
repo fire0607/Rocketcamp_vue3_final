@@ -2,7 +2,7 @@
 <template>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="./index.html">Navbar</a>
+      <router-link to="/" class="navbar-brand">Navbar</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -19,14 +19,18 @@
         id="navbarNavAltMarkup"
       >
         <div class="navbar-nav">
-          <a class="nav-item nav-link me-4 active" href="./index.html"
-            >Home <span class="sr-only">(current)</span></a
+          <router-link to="/" class="nav-item nav-link me-4 active"
+            >Home<span class="sr-only">(current)</span></router-link
           >
-          <a class="nav-item nav-link me-4" href="./product.html">Product</a>
-          <a class="nav-item nav-link me-4" href="./detail.html">Detail</a>
-          <a class="nav-item nav-link" href="./cart.html"
+          <router-link to="/products" class="nav-item nav-link me-4"
+            >Product</router-link
+          >
+          <router-link to="/products-detail" class="nav-item nav-link me-4"
+            >Detail</router-link
+          >
+          <router-link to="/shopping-cart" class="nav-item nav-link"
             ><font-awesome-icon :icon="['fas', 'shopping-cart']"
-          /></a>
+          /></router-link>
         </div>
       </div>
     </nav>

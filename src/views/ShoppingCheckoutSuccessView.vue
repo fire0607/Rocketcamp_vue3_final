@@ -3,7 +3,7 @@
   <div class="position-relative d-flex">
     <div class="container d-flex flex-column" style="min-height: 100vh">
       <nav class="navbar navbar-expand-lg navbar-light px-0">
-        <a class="navbar-brand" href="./index.html">Navbar</a>
+        <router-link to="/" class="navbar-brand">Navbar</router-link>
       </nav>
       <div class="row my-auto pb-7">
         <div class="col-md-4 d-flex flex-column">
@@ -13,9 +13,7 @@
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod
             </p>
-            <a href="./index.html" class="btn btn-dark mt-4 px-5"
-              >Back To Home</a
-            >
+            <router-link to="/" class="btn btn-dark mt-4 px-5">Back To Home</router-link>
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@
         <div
           class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4"
         >
-          <a class="text-white h4" href="./index.html">LOGO</a>
+          <router-link to="/" class="text-white h4">LOGO</router-link>
           <ul class="d-flex list-unstyled mb-0 h4">
             <li>
               <a href="#" class="text-white mx-3"
