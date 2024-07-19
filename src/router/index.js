@@ -6,6 +6,7 @@ import ShoppingCartView from '../views/ShoppingCartView.vue'
 import ShoppingCheckoutView from '../views/ShoppingCheckoutView.vue'
 import ShoppingCheckout2View from '../views/ShoppingCheckout2View.vue'
 import ShoppingCheckoutSuccessView from '../views/ShoppingCheckoutSuccessView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
       name: 'ShoppingCheckoutSuccess',
       component: ShoppingCheckoutSuccessView
     }]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFoundView
   }
 ]
 
