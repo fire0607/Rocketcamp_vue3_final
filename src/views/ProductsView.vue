@@ -205,7 +205,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
@@ -232,7 +232,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
@@ -259,7 +259,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
@@ -286,7 +286,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
@@ -313,7 +313,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
@@ -340,7 +340,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
@@ -367,7 +367,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
@@ -394,7 +394,7 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <a href="./detail.html">Lorem ipsum</a>
+                    <router-link to="/products-detail">Lorem ipsum</router-link>
                   </h4>
                   <p class="card-text mb-0">
                     NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
