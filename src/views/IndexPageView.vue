@@ -15,6 +15,7 @@ import TheNavbar from '../components/TheNavbar.vue'
         background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
         background-position: center center;
         opacity: 0.1;
+        pointer-events: none;
       "
     ></div>
     <div class="container d-flex flex-column" style="min-height: 100vh">
