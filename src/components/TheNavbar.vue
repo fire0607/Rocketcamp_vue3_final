@@ -2,7 +2,14 @@
 <template>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <router-link to="/" class="navbar-brand">Navbar</router-link>
+      <router-link to="/" class="navbar-brand"
+        ><h1>
+          <img
+            src="/image/morning-dew-high-resolution-logo-transparent.png"
+            alt="清晨微光 Morning Dew"
+            height="45px"
+          /></h1
+      ></router-link>
       <button
         class="navbar-toggler"
         type="button"
