@@ -26,7 +26,7 @@
         id="navbarNavAltMarkup"
       >
         <div class="navbar-nav">
-          <router-link to="/" class="nav-item nav-link me-4 active"
+          <router-link to="/" class="nav-item nav-link me-4"
             >Home<span class="sr-only">(current)</span></router-link
           >
           <router-link to="/products" class="nav-item nav-link me-4"

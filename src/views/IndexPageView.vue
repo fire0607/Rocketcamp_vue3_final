@@ -12,7 +12,7 @@ import TheNavbar from '../components/TheNavbar.vue'
         bottom: 0;
         left: 0;
         right: 0;
-        background-image: url('/public/image/banner.png');
+        background-image: url('/image/banner.png');
         background-position: 60% 70%;
         opacity: 0.1;
         pointer-events: none;

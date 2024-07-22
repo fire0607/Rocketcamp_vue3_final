@@ -16,7 +16,7 @@
           bottom: 0;
           left: 0;
           right: 0;
-          background-image: url('/public/image/banner.png');
+          background-image: url('image/banner.png');
           background-position: 60% 60%;
           opacity: 0.1;
         "
