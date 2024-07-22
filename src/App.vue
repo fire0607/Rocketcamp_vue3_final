@@ -6,7 +6,8 @@
 </template>
 
 <style lang="scss">
-.container, .container-fluid {
-  --bs-gutter-x: 0.5rem;
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
 </style>
