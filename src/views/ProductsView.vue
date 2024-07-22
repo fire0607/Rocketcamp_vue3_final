@@ -16,12 +16,12 @@
           bottom: 0;
           left: 0;
           right: 0;
-          background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-          background-position: center center;
+          background-image: url('/public/image/banner.png');
+          background-position: 60% 60%;
           opacity: 0.1;
         "
       ></div>
-      <h2 class="fw-bold">Lorem ipsum.</h2>
+      <h2 class="fw-bold">香水一覽</h2>
     </div>
     <div class="container mt-md-5 mt-3 mb-7">
       <div class="row">
@@ -40,7 +40,7 @@
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <h4 class="mb-0">香水</h4>
                   <font-awesome-icon :icon="['fas', 'chevron-down']" />
                 </div>
               </div>
@@ -91,7 +91,7 @@
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <h4 class="mb-0">淡香水</h4>
                   <font-awesome-icon :icon="['fas', 'chevron-down']" />
                 </div>
               </div>
@@ -142,7 +142,7 @@
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <h4 class="mb-0">香氛</h4>
                   <font-awesome-icon :icon="['fas', 'chevron-down']" />
                 </div>
               </div>
@@ -428,4 +428,21 @@
     </div>
   </BaseLayout>
 </template>
-<style scoped></style>
+<style lang="scss" scoped>
+h2{
+  font-weight: 600 !important;
+  color: #433c36;
+  word-break: break-word;
+}
+h4{
+  font-weight: 600 !important;
+  color: #433c36;
+  word-break: break-word;
+}
+p{
+  font-weight: 500 !important;
+  line-height: 1.8;
+  color: #433c36 !important;
+  word-break: break-word;
+}
+</style>
