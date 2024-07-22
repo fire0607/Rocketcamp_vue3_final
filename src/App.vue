@@ -5,4 +5,8 @@
   <RouterView />
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.container, .container-fluid {
+  --bs-gutter-x: 0.5rem;
+}
+</style>
