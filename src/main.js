@@ -1,5 +1,4 @@
 import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -7,9 +6,8 @@ import App from './App.vue'
 import router from './router'
 import BaseLayout from './components/BaseLayout.vue'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
 import './assets/all.scss'
+import 'bootstrap'
 import IconLoader from './components/IconLoader.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import 'swiper/css'
