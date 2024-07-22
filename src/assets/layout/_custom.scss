@@ -64,4 +64,14 @@
     }
   }
 
-// my color variables
+  @each $color, $value in $theme-colors {
+    .text-#{$color}-hover {
+      &:hover {
+        color: $value !important;
+      }
+    }
+  }
+
+  .text-primary-0-hover {
+    transition: color 0.3s ease;
+  }

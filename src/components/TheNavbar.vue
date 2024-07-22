@@ -26,16 +26,16 @@
         id="navbarNavAltMarkup"
       >
         <div class="navbar-nav">
-          <router-link to="/" class="nav-item nav-link me-4"
+          <router-link to="/" class="nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
             >Home<span class="sr-only">(current)</span></router-link
           >
-          <router-link to="/products" class="nav-item nav-link me-4"
+          <router-link to="/products" class="nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
             >Product</router-link
           >
-          <router-link to="/products-detail" class=" nav-item nav-link me-4"
+          <router-link to="/products-detail" class=" nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
             >Detail</router-link
           >
-          <router-link  to="/shopping-cart" class="nav-item nav-link"
+          <router-link  to="/shopping-cart" class="nav-item nav-link text-primary-2 text-primary-0-hover"
             ><font-awesome-icon :icon="['fas', 'shopping-cart']"
           /></router-link>
         </div>
@@ -43,13 +43,5 @@
     </nav>
   </div>
 </template>
-<style lang="scss" scoped>
-.navbar-nav {
-  .nav-link {
-    color: #433c36;
-    &:hover {
-      transition: .3s;
-    }
-  }
-}
+<style scoped>
 </style>
