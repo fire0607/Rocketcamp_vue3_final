@@ -75,3 +75,34 @@
   .text-primary-0-hover {
     transition: color 0.3s ease;
   }
+
+  .bg-primary-1 {
+    background-color: $pale-sage !important;
+  }
+  
+  .bg-primary-2 {
+    background-color: $deep-taupe !important;
+  }
+  
+  .text-primary-2 {
+    color: $deep-taupe !important;
+  }
+  
+  .text-primary-1 {
+    color: $pale-sage !important;
+  }
+  
+  .btn-primary-2 {
+    background-color: $deep-taupe !important;
+    border-color: $deep-taupe !important;
+    color: $pale-sage !important;
+  }
+
+  .custom-input {
+    border-color: $deep-taupe;
+    
+    &:focus {
+      border-color: $deep-taupe;
+      box-shadow: 0 0 0 0.2rem rgba($deep-taupe, 0.25);
+    }
+  }
