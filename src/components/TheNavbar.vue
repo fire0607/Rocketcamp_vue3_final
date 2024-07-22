@@ -46,12 +46,10 @@
 <style lang="scss" scoped>
 .navbar-nav {
   .nav-link {
-    color: rgb(67, 60, 54);
+    color: #433c36;
     &:hover {
-      color: rgba(67, 60, 54, 0.7); // 這是Bootstrap默認的hover顏色，保持不變
-    }
-    &.active {
-      color: #d8c062 !important;
+      color: #d8c062;
+      transition: .3s;
     }
   }
 }
