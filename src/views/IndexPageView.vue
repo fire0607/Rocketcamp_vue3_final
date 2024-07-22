@@ -12,8 +12,8 @@ import TheNavbar from '../components/TheNavbar.vue'
         bottom: 0;
         left: 0;
         right: 0;
-        background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-        background-position: center center;
+        background-image: url('/public/image/banner.png');
+        background-position: 60% 70%;
         opacity: 0.1;
         pointer-events: none;
       "
@@ -22,12 +22,11 @@ import TheNavbar from '../components/TheNavbar.vue'
       <TheNavbar />
       <div class="row justify-content-center my-auto">
         <div class="col-md-4 text-center">
-          <h2>Lorem ipsum.</h2>
+          <h2>微光晨曦，綻放自然之美</h2>
           <p class="text-muted mb-0">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod.
+            清晨微光的每一瓶香水，都像是一個迷人的清晨，<br>帶著自然的清新和希望。
           </p>
-          <router-link to="/products" class="btn btn-dark rounded-0 mt-6">Lorem ipsum.</router-link>
+          <router-link to="/products" class="btn btn-dark rounded-0 mt-4">了解更多</router-link>
         </div>
       </div>
     </div>
@@ -196,4 +195,13 @@ import TheNavbar from '../components/TheNavbar.vue'
   </BaseLayout>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+h2{
+  font-weight: 600 !important;
+  color: #433c36;
+}
+.btn{
+  background-color: #d8c062;
+  border: #d8c062;
+}
+</style>
