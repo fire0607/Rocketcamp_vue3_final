@@ -36,16 +36,15 @@ import TheNavbar from '../components/TheNavbar.vue'
       <div class="col-md-4 mt-md-4">
         <div class="card border-0 mb-4">
           <img
-            src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+            src="/image/product-1.png"
             class="card-img-top rounded-0"
             alt="..."
           />
           <div class="card-body text-center">
-            <h4>Lorem ipsum</h4>
+            <h4>清晨鳥啼</h4>
             <div class="d-flex justify-content-between">
               <p class="card-text text-muted mb-0">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod.
+                早春的清新薄荷、花梨木、晨露滴落的綠茶葉
               </p>
             </div>
           </div>
@@ -54,16 +53,15 @@ import TheNavbar from '../components/TheNavbar.vue'
       <div class="col-md-4 mt-md-4">
         <div class="card border-0 mb-4">
           <img
-            src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+            src="/image/product-2.png"
             class="card-img-top rounded-0"
             alt="..."
           />
           <div class="card-body text-center">
-            <h4>Lorem ipsum</h4>
+            <h4>初曉花園</h4>
             <div class="d-flex justify-content-between">
               <p class="card-text text-muted mb-0">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod.
+                清晨的玫瑰花瓣、繡球花、些許的青草香
               </p>
             </div>
           </div>
@@ -72,16 +70,15 @@ import TheNavbar from '../components/TheNavbar.vue'
       <div class="col-md-4 mt-md-4">
         <div class="card border-0 mb-4">
           <img
-            src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+            src="/image/product-3.png"
             class="card-img-top rounded-0"
             alt="..."
           />
           <div class="card-body text-center">
-            <h4>Lorem ipsum</h4>
+            <h4>薄霧森林</h4>
             <div class="d-flex justify-content-between">
               <p class="card-text text-muted mb-0">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod.
+                杉木、柏樹、輕霧中的白蘭地
               </p>
             </div>
           </div>
@@ -199,9 +196,32 @@ import TheNavbar from '../components/TheNavbar.vue'
 h2{
   font-weight: 600 !important;
   color: #433c36;
+  word-break: break-word;
+}
+h4{
+  font-weight: 600 !important;
+  color: #433c36;
+  word-break: break-word;
+}
+p{
+  font-weight: 500 !important;
+  color: #433c36 !important;
+  word-break: break-word;
 }
 .btn{
   background-color: #d8c062;
   border: #d8c062;
 }
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-text {
+  width: 100%;
+  text-align: center;
+}
+
 </style>
