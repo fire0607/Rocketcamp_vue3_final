@@ -2,28 +2,35 @@
 <template>
   <div>
     <div class="bg-light py-4">
-    <div class="container">
-      <div
-        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start"
-      >
-        <p class="mb-0 fw-bold">Lorem ipsum dolor sit amet.</p>
-        <div class="input-group w-md-50 mt-md-0 mt-3">
-          <input type="text" class="form-control rounded-0" placeholder="" />
-          <div class="input-group-append">
-            <button class="btn btn-dark rounded-0" type="button" id="search">
-              Lorem ipsum
-            </button>
+      <div class="container">
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start"
+        >
+          <p class="mb-0 fw-bold">留下您的mail，與我們聯繫</p>
+          <div class="input-group w-md-50 mt-md-0 mt-3">
+            <input type="text" class="form-control rounded-0" placeholder="" />
+            <div class="input-group-append">
+              <button class="btn btn-dark rounded-0" type="button" id="search">
+                送出
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
     <div class="bg-dark py-5">
       <div class="container">
         <div
           class="d-flex align-items-center justify-content-between text-white mb-md-7 mb-4"
         >
-          <router-link to="/" class="text-white h4">LOGO</router-link>
+          <router-link to="/" class="text-white h4"
+            ><h1>
+              <img
+                src="/image/morning-dew-high-resolution-logo-transparent.png"
+                alt="清晨微光 Morning Dew"
+                height="50px"
+              /></h1
+          ></router-link>
           <ul class="d-flex list-unstyled mb-0 h4">
             <li>
               <a href="#" class="text-white mx-3"
@@ -49,10 +56,26 @@
             <p class="mb-0">02-3456-7890</p>
             <p class="mb-0">service@mail.com</p>
           </div>
-          <p class="mb-0">© 2020 LOGO All Rights Reserved.</p>
+          <p class="mb-0">© 2024 Morning Dew All Rights Reserved.</p>
         </div>
       </div>
     </div>
   </div>
 </template>
-<style scoped></style>
+<style lang="scss" scoped>
+.bg-light {
+  background-color: #dce0c6 !important;
+  p {
+    color: #433c36 !important;
+  }
+  .btn {
+    background-color: #433c36 !important;
+  }
+}
+.bg-dark {
+  background-color: #433c36 !important;
+  p,a{
+    color: #dce0c6 !important;
+  }
+}
+</style>
