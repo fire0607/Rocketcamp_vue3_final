@@ -3,17 +3,27 @@
   <div class="position-relative d-flex">
     <div class="container d-flex flex-column" style="min-height: 100vh">
       <nav class="navbar navbar-expand-lg navbar-light px-0">
-        <router-link to="/" class="navbar-brand">Navbar</router-link>
+        <router-link to="/" class="navbar-brand"
+          ><h1>
+            <img
+              src="/image/morning-dew-high-resolution-logo-transparent.png"
+              alt="清晨微光 Morning Dew"
+              height="45px"
+            /></h1
+        ></router-link>
       </nav>
       <div class="row my-auto pb-7">
-        <div class="col-md-4 d-flex flex-column">
+        <div class="col-md-4 d-flex flex-column text-primary-2">
           <div class="my-auto">
-            <h2>Checkout Success</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod
-            </p>
-            <router-link to="/" class="btn btn-dark mt-4 px-5">Back To Home</router-link>
+            <h2 class="fw-bold">訂單已成立</h2>
+            <p>感謝您的訂購，我們會盡速為您安排出貨。</p>
+            <router-link to="/" class="btn btn-primary-2 mt-4 px-5"
+              ><font-awesome-icon
+                :icon="['fas', 'chevron-left']"
+                class="me-2"
+              />
+              回到首頁</router-link
+            >
           </div>
         </div>
       </div>
@@ -24,8 +34,10 @@
         z-index: -1;
         min-height: 100vh;
         right: 0;
-        background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-        background-position: center center;
+        background-image: url(/image/banner.png);
+        background-size: 150%;
+        background-color: rgb(0, 0, 0, 0.1);
+        background-blend-mode: multiply;
       "
     ></div>
   </div>
