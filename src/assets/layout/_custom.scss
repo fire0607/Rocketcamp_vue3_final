@@ -14,14 +14,14 @@
       transform: translateY(-50%);
       width: 20px;
       height: 20px;
-      border: 1px solid $gray-900;
+      border: 1px solid $golden-wheat;
     }
     &::before {
       left: 10px;
       transform: translate(-50%, -50%);
       width: 14px;
       height: 14px;
-      background-color: $gray-900;
+      background-color: $golden-wheat;
     }
   }
   .card-header.collapsed .custom-checkout-label::before {
@@ -61,5 +61,75 @@
   @include media-breakpoint-up(md) {
     .w-md-50 {
       width: 50% !important;
+    }
+  }
+
+  @each $color, $value in $theme-colors {
+    .text-#{$color}-hover {
+      &:hover {
+        color: $value !important;
+      }
+    }
+  }
+
+  .text-primary-0-hover {
+    transition: color 0.3s ease;
+  }
+
+  .bg-primary-1 {
+    background-color: $pale-sage !important;
+  }
+  
+  .bg-primary-2 {
+    background-color: $deep-taupe !important;
+  }
+  
+  .text-primary-2 {
+    color: $deep-taupe !important;
+  }
+  
+  .text-primary-1 {
+    color: $pale-sage !important;
+  }
+  
+  .btn-primary-2 {
+    background-color: $deep-taupe !important;
+    border-color: $deep-taupe !important;
+    color: $pale-sage !important;
+
+    &:hover{
+      background-color: $golden-wheat !important; 
+      border-color: $golden-wheat !important;
+      color: #fff !important;
+    }
+  }
+
+  .btn-primary-0 {
+    background-color: $golden-wheat !important;
+    border-color: $golden-wheat !important;
+    color: #fff !important;
+    &:hover{
+      background-color: rgba(216, 192, 98,0.7);
+      transition: .3s;
+    }
+  }
+
+  .btn-white-primary-0 {
+    background-color: #fff !important;
+    border-color: #fff !important;
+    color: $deep-taupe !important;
+    &:hover{
+      background-color: $golden-wheat !important;
+      color: #fff !important;
+      transition: .3s;
+    }
+  }
+
+  .custom-input {
+    border-color: $deep-taupe;
+    
+    &:focus {
+      border-color: $deep-taupe;
+      box-shadow: 0 0 0 0.2rem rgba($deep-taupe, 0.25);
     }
   }

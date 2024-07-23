@@ -8,38 +8,38 @@ const swiperInstance = ref(null)
 const products = ref([
   {
     id: 1,
-    name: 'Lorem ipsum',
-    image: 'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    price: 1080,
-    originalPrice: 1200
+    name: '晨曦微光',
+    image: '/image/product-1.png',
+    price: 2000,
+    originalPrice: 2320
   },
   {
-    id: 1,
-    name: 'Lorem ipsum',
-    image: 'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    price: 1080,
-    originalPrice: 1200
+    id: 2,
+    name: '露珠輕語',
+    image: '/image/product-2.png',
+    price: 2300,
+    originalPrice: 2450
   },
   {
-    id: 1,
-    name: 'Lorem ipsum',
-    image: 'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    price: 1080,
-    originalPrice: 1200
+    id: 3,
+    name: '晨風綠意',
+    image: '/image/product-3.png',
+    price: 2000,
+    originalPrice: 2320
   },
   {
-    id: 1,
-    name: 'Lorem ipsum',
-    image: 'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    price: 1080,
-    originalPrice: 1200
+    id: 4,
+    name: '微風拂曉',
+    image: '/image/product-4.png',
+    price: 2300,
+    originalPrice: 2450
   },
   {
-    id: 1,
-    name: 'Lorem ipsum',
-    image: 'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    price: 1080,
-    originalPrice: 1200
+    id: 5,
+    name: '晨光花影',
+    image: '/image/product-5.png',
+    price: 2000,
+    originalPrice: 2320
   }
 ])
 
@@ -82,18 +82,18 @@ onUnmounted(() => {
               class="card-img-top rounded-0"
               :alt="product.name"
             />
-            <a href="#" class="text-dark"> </a>
+            <a href="#" class="text-primary-2"> </a>
             <div class="card-body p-0">
-              <h4 class="mb-0 mt-3">
-                <a href="#">{{ product.name }}</a>
+              <h4 class="mb-0 mt-3 text-primary-2">
+                <a href="#" class="text-primary-2">{{ product.name }}</a>
               </h4>
-              <p class="card-text mb-0">
+              <p class="card-text mb-0 text-primary-2">
                 NT${{ product.price }}
-                <span class="text-muted"
+                <span class="text-primary-2"
                   ><del>NT${{ product.originalPrice }}</del></span
                 >
               </p>
-              <p class="text-muted mt-3"></p>
+              <p class="text-primary-2 mt-3"></p>
             </div>
           </div>
         </div>

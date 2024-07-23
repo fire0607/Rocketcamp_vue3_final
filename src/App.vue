@@ -5,4 +5,9 @@
   <RouterView />
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+</style>

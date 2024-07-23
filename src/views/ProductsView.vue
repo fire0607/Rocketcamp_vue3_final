@@ -16,14 +16,14 @@
           bottom: 0;
           left: 0;
           right: 0;
-          background-image: url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-          background-position: center center;
+          background-image: url('image/banner.png');
+          background-position: 60% 60%;
           opacity: 0.1;
         "
       ></div>
-      <h2 class="fw-bold">Lorem ipsum.</h2>
+      <h2 class="fw-bold text-primary-2">香水一覽</h2>
     </div>
-    <div class="container mt-md-5 mt-3 mb-7">
+    <div class="container mt-md-5 mt-3 mb-7 text-primary-2 lh-lg">
       <div class="row">
         <div class="col-md-4">
           <div
@@ -40,7 +40,7 @@
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <h4 class="mb-0 text-primary-2">香水</h4>
                   <font-awesome-icon :icon="['fas', 'chevron-down']" />
                 </div>
               </div>
@@ -91,7 +91,7 @@
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <h4 class="mb-0 text-primary-2">淡香水</h4>
                   <font-awesome-icon :icon="['fas', 'chevron-down']" />
                 </div>
               </div>
@@ -104,27 +104,27 @@
                 <div class="card-body py-0">
                   <ul class="list-unstyled">
                     <li>
-                      <a href="#" class="py-2 d-block text-muted"
+                      <a href="#" class="py-2 d-block text-primary-2"
                         >Lorem ipsum</a
                       >
                     </li>
                     <li>
-                      <a href="#" class="py-2 d-block text-muted"
+                      <a href="#" class="py-2 d-block text-primary-2"
                         >Lorem ipsum</a
                       >
                     </li>
                     <li>
-                      <a href="#" class="py-2 d-block text-muted"
+                      <a href="#" class="py-2 d-block text-primary-2"
                         >Lorem ipsum</a
                       >
                     </li>
                     <li>
-                      <a href="#" class="py-2 d-block text-muted"
+                      <a href="#" class="py-2 d-block text-primary-2"
                         >Lorem ipsum</a
                       >
                     </li>
                     <li>
-                      <a href="#" class="py-2 d-block text-muted"
+                      <a href="#" class="py-2 d-block text-primary-2"
                         >Lorem ipsum</a
                       >
                     </li>
@@ -142,7 +142,7 @@
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0">Lorem ipsum</h4>
+                  <h4 class="mb-0 text-primary-2">香氛</h4>
                   <font-awesome-icon :icon="['fas', 'chevron-down']" />
                 </div>
               </div>
@@ -205,10 +205,10 @@
                 </a>
                 <div class="card-body p-0">
                   <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
+                    <router-link to="/products-detail" class="text-primary-2">Lorem ipsum</router-link>
                   </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
+                  <p class="card-text mb-0 text-primary-2">
+                    NT$1,080 <span class="text-primary-2"><del>NT$1,200</del></span>
                   </p>
                   <p class="text-muted mt-3"></p>
                 </div>
