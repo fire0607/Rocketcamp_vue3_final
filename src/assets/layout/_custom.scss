@@ -14,14 +14,14 @@
       transform: translateY(-50%);
       width: 20px;
       height: 20px;
-      border: 1px solid $gray-900;
+      border: 1px solid $golden-wheat;
     }
     &::before {
       left: 10px;
       transform: translate(-50%, -50%);
       width: 14px;
       height: 14px;
-      background-color: $gray-900;
+      background-color: $golden-wheat;
     }
   }
   .card-header.collapsed .custom-checkout-label::before {
