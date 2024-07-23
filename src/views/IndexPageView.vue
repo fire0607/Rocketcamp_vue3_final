@@ -42,7 +42,7 @@ import TheNavbar from '../components/TheNavbar.vue'
           />
           <div class="card-body text-center text-primary-2">
             <h4 class="fw-bolder">清晨鳥啼</h4>
-            <div class="d-flex justify-content-between">
+            <div>
               <p class="card-text text-primary-2 mb-0 text-center">
                 早春的清新薄荷、花梨木、晨露滴落的綠茶葉
               </p>
@@ -59,7 +59,7 @@ import TheNavbar from '../components/TheNavbar.vue'
           />
           <div class="card-body text-center text-primary-2">
             <h4 class="fw-bolder">初曉花園</h4>
-            <div class="d-flex justify-content-between">
+            <div>
               <p class="card-text text-primary-2 mb-0 text-center">
                 清晨的玫瑰花瓣、繡球花、些許的青草香
               </p>
@@ -76,7 +76,7 @@ import TheNavbar from '../components/TheNavbar.vue'
           />
           <div class="card-body text-center text-primary-2">
             <h4 class="fw-bolder">薄霧森林</h4>
-            <div class="d-flex justify-content-between">
+            <div>
               <p class="card-text text-primary-2 mb-0 text-center">
                 杉木、柏樹、輕霧中的白蘭地
               </p>
