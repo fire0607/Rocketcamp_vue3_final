@@ -104,6 +104,16 @@
     }
   }
 
+  .btn-primary-0 {
+    background-color: $golden-wheat !important;
+    border-color: $golden-wheat !important;
+    color: #fff !important;
+    &:hover{
+      background-color: rgba(216, 192, 98,0.7);
+      transition: .3s;
+    }
+  }
+
   .custom-input {
     border-color: $deep-taupe;
     
