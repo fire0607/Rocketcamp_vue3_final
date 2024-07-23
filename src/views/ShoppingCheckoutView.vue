@@ -148,7 +148,7 @@
         <div
           class="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100"
         >
-          <router-link to="/products" class="text-dark mt-md-0 mt-3"
+          <router-link to="/shopping-cart" class="text-dark mt-md-0 mt-3"
             ><font-awesome-icon :icon="['fas', 'chevron-left']" class="me-2" />
             返回購物車</router-link
           >
