@@ -96,6 +96,12 @@
     background-color: $deep-taupe !important;
     border-color: $deep-taupe !important;
     color: $pale-sage !important;
+
+    &:hover{
+      background-color: $golden-wheat !important; 
+      border-color: $golden-wheat !important;
+      color: #fff !important;
+    }
   }
 
   .custom-input {

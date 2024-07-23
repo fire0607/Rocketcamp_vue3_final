@@ -26,7 +26,7 @@ import TheNavbar from '../components/TheNavbar.vue'
           <p class="text-primary-2 mb-0 lh-base lh-lg">
             清晨微光的每一瓶香水，都像是一個迷人的清晨，<br>帶著自然的清新和希望。
           </p>
-          <router-link to="/products" class="btn btn-dark rounded-0 mt-4">了解更多</router-link>
+          <router-link to="/products" class="btn btn-primary-2 rounded-0 mt-4">了解更多</router-link>
         </div>
       </div>
     </div>
