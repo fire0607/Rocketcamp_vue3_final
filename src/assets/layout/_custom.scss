@@ -114,6 +114,17 @@
     }
   }
 
+  .btn-white-primary-0 {
+    background-color: #fff !important;
+    border-color: #fff !important;
+    color: $deep-taupe !important;
+    &:hover{
+      background-color: $golden-wheat !important;
+      color: #fff !important;
+      transition: .3s;
+    }
+  }
+
   .custom-input {
     border-color: $deep-taupe;
     
