@@ -1,0 +1,13 @@
+$golden-wheat: #d8c062;
+$pale-sage: #dce0c6;
+$deep-taupe: #433c36;
+
+
+$custom-colors:(
+    "primary-0":$golden-wheat,
+    "primary-1":$pale-sage,
+    "primary-2":$deep-taupe
+);
+
+$theme-colors:map-merge($theme-colors , $custom-colors );
+
