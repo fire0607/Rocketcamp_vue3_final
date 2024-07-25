@@ -1,4 +1,14 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import { useProducts } from '@/composables/useProducts'
+import ProductCard from '@/components/ProductCard.vue'
+
+const { products, loading, error, fetchProducts } = useProducts()
+
+onMounted(() => {
+  fetchProducts()
+})
+</script>
 <template>
   <BaseLayout
     :show-navbar="true"
@@ -186,222 +196,15 @@
           </div>
         </div>
         <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail" class="text-primary-2">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0 text-primary-2">
-                    NT$1,080 <span class="text-primary-2"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
+          <div v-if="loading">正在加載產品...</div>
+          <div v-else-if="error">{{ error }}</div>
+          <div v-else class="row">
+            <div
+              v-for="product in products"
+              :key="product.id"
+              class="col-md-6"
+            >
+              <ProductCard :product="product" />
             </div>
           </div>
           <nav class="d-flex justify-content-center">

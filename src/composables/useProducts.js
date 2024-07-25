@@ -11,8 +11,15 @@ export function useProducts () {
     error.value = null
     try {
       const response = await getProducts()
-      products.value = response.data
+      console.log('API response:', response)
+      if (Array.isArray(response.data.products)) {
+        products.value = response.data.products
+      } else {
+        throw new Error('Unexpected API response format')
+      }
+      console.log('Products:', products.value)
     } catch (err) {
+      console.error('Error fetching products:', err)
       error.value = err.message || 'Failed to fetch products'
     } finally {
       loading.value = false
