@@ -1,12 +1,61 @@
 <script setup>
-import { onMounted } from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useProducts } from '@/composables/useProducts'
 import ProductCard from '@/components/ProductCard.vue'
 
 const { products, loading, error, fetchProducts } = useProducts()
 
-onMounted(() => {
-  fetchProducts()
+const currentPage = ref(1)
+const itemsPerPage = 8
+
+const totalPages = computed(() => {
+  if (!Array.isArray(products.value) || products.value.length === 0) return 1
+  return Math.max(1, Math.ceil(products.value.length / itemsPerPage))
+})
+
+const displayedPages = computed(() => {
+  const range = 2
+  let start = Math.max(currentPage.value - range, 1)
+  let end = Math.min(currentPage.value + range, totalPages.value)
+
+  if (end - start + 1 < range * 2 + 1) {
+    if (start === 1) {
+      end = Math.min(start + range * 2, totalPages.value)
+    } else {
+      start = Math.max(end - range * 2, 1)
+    }
+  }
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+})
+
+const changePage = (page) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page
+    nextTick(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
+  }
+}
+
+const paginatedProducts = computed(() => {
+  if (!Array.isArray(products.value)) return []
+  const start = (currentPage.value - 1) * itemsPerPage
+  const end = start + itemsPerPage
+  return products.value.slice(start, end)
+})
+
+onMounted(async () => {
+  try {
+    await fetchProducts()
+    console.log('Products fetched:', products.value?.length)
+  } catch (e) {
+    console.error('Error fetching products:', e)
+  }
+})
+
+watch(currentPage, (newPage) => {
+  console.log('Current page changed to:', newPage)
 })
 </script>
 <template>
@@ -199,28 +248,50 @@ onMounted(() => {
           <div v-if="loading">正在加載產品...</div>
           <div v-else-if="error">{{ error }}</div>
           <div v-else class="row">
-            <div
-              v-for="product in products"
-              :key="product.id"
-              class="col-md-6"
-            >
+            <div v-for="product in paginatedProducts" :key="product.id" class="col-md-6">
               <ProductCard :product="product" />
             </div>
           </div>
-          <nav class="d-flex justify-content-center">
+          <nav v-if="totalPages > 1" class="d-flex justify-content-center">
             <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
+              <!-- 上一頁按鈕 -->
+              <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                <a
+                  class="page-link px-3"
+                  href="#"
+                  @click.prevent="changePage(currentPage - 1)"
+                  aria-label="Previous"
+                >
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
+
+              <!-- 頁碼 -->
+              <li
+                v-for="page in displayedPages"
+                :key="page"
+                class="page-item"
+                :class="{ active: page === currentPage }"
+              >
+                <a
+                  class="page-link  px-3"
+                  href="#"
+                  @click.prevent="changePage(page)"
+                  >{{ page }}</a
+                >
               </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
+
+              <!-- 下一頁按鈕 -->
+              <li
+                class="page-item"
+                :class="{ disabled: currentPage === totalPages }"
+              >
+                <a
+                  class="page-link  px-3"
+                  href="#"
+                  @click.prevent="changePage(currentPage + 1)"
+                  aria-label="Next"
+                >
                   <span aria-hidden="true">&raquo;</span>
                 </a>
               </li>
