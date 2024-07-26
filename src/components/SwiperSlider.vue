@@ -67,10 +67,7 @@ onMounted(() => {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
-    },
-    preventClicks: false,
-    preventClicksPropagation: false,
-    simulateTouch: false
+    }
   })
 })
 
