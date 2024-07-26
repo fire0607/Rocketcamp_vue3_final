@@ -66,7 +66,6 @@ onMounted(() => {
       <h3 class="fw-bold">其他人也看了...</h3>
       <SwiperSlider />
     </div>
-    <div v-else>找不到產品!</div>
   </BaseLayout>
 </template>
 <style scoped></style>
