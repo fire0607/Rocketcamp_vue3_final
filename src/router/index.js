@@ -20,8 +20,8 @@ const routes = [
     component: ProductsView
   },
   {
-    path: '/products-detail',
-    name: 'ProductsDetail',
+    path: '/products/:id',
+    name: 'ProductDetail',
     component: ProductsDetailView
   },
   {

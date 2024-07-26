@@ -24,7 +24,7 @@ defineProps({
         <div class="card-body p-0">
           <h4 class="mb-0 mt-3">
             <router-link
-              :to="`/products-detail/${product.id}`"
+              :to="{ name: 'ProductDetail', params: { id: product.id } }"
               class="text-primary-2 fw-bold"
             >
               {{ product.title }}
