@@ -245,10 +245,16 @@ watch(currentPage, (newPage) => {
           </div>
         </div>
         <div class="col-md-8">
-          <div v-if="loading">正在加載產品...</div>
+          <div v-if="loading" class="mt-5 my-auto text-center">
+            <h4 class="fw-bolder mb-5">Loading...</h4>
+          </div>
           <div v-else-if="error">{{ error }}</div>
           <div v-else class="row">
-            <div v-for="product in paginatedProducts" :key="product.id" class="col-md-6">
+            <div
+              v-for="product in paginatedProducts"
+              :key="product.id"
+              class="col-md-6"
+            >
               <ProductCard :product="product" />
             </div>
           </div>
@@ -274,7 +280,7 @@ watch(currentPage, (newPage) => {
                 :class="{ active: page === currentPage }"
               >
                 <a
-                  class="page-link  px-3"
+                  class="page-link px-3"
                   href="#"
                   @click.prevent="changePage(page)"
                   >{{ page }}</a
@@ -287,7 +293,7 @@ watch(currentPage, (newPage) => {
                 :class="{ disabled: currentPage === totalPages }"
               >
                 <a
-                  class="page-link  px-3"
+                  class="page-link px-3"
                   href="#"
                   @click.prevent="changePage(currentPage + 1)"
                   aria-label="Next"

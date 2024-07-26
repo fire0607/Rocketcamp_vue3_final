@@ -48,8 +48,10 @@ onMounted(() => {
     :show-footer="true"
     container-class="my-custom-container"
   >
-    <div v-if="loading">Loading...</div>
-    <div v-else-if="error">Error: {{ error }}</div>
+    <div v-if="loading" class="mt-5 my-auto text-center">
+      <h4 class="fw-bolder mb-5">Loading...</h4>
+    </div>
+    <div v-else-if="error" class="mt-5 col-md-4 text-center">Error: {{ error }}</div>
     <div v-if="product" class="container text-primary-2 lh-lg">
       <div class="row align-items-center">
         <ProductImage :image="product.imageUrl" />
