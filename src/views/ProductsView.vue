@@ -7,10 +7,12 @@ const { products, loading, error, fetchProducts } = useProducts()
 
 const currentPage = ref(1)
 const itemsPerPage = 8
+const categories = ref([])
+const selectedCategory = ref('全部')
 
 const totalPages = computed(() => {
-  if (!Array.isArray(products.value) || products.value.length === 0) return 1
-  return Math.max(1, Math.ceil(products.value.length / itemsPerPage))
+  if (!Array.isArray(filteredProducts.value) || filteredProducts.value.length === 0) return 1
+  return Math.max(1, Math.ceil(filteredProducts.value.length / itemsPerPage))
 })
 
 const displayedPages = computed(() => {
@@ -39,15 +41,34 @@ const changePage = (page) => {
 }
 
 const paginatedProducts = computed(() => {
-  if (!Array.isArray(products.value)) return []
+  if (!Array.isArray(filteredProducts.value)) return []
   const start = (currentPage.value - 1) * itemsPerPage
   const end = start + itemsPerPage
-  return products.value.slice(start, end)
+  return filteredProducts.value.slice(start, end)
 })
+
+const fetchCategories = () => {
+  if (Array.isArray(products.value)) {
+    categories.value = ['全部', ...new Set(products.value.map(product => product.category))]
+  }
+}
+
+const filteredProducts = computed(() => {
+  if (selectedCategory.value === '全部') {
+    return products.value
+  }
+  return products.value.filter(product => product.category === selectedCategory.value)
+})
+
+const selectCategory = (category) => {
+  selectedCategory.value = category
+  currentPage.value = 1
+}
 
 onMounted(async () => {
   try {
     await fetchProducts()
+    fetchCategories()
     console.log('Products fetched:', products.value?.length)
   } catch (e) {
     console.error('Error fetching products:', e)
@@ -93,14 +114,11 @@ watch(currentPage, (newPage) => {
               <div
                 class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0"
                 id="headingOne"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
               >
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0 text-primary-2">香水</h4>
-                  <font-awesome-icon :icon="['fas', 'chevron-down']" />
+                  <h4 class="mb-0 text-primary-2 fw-bold">產品類別</h4>
                 </div>
               </div>
               <div
@@ -109,134 +127,20 @@ watch(currentPage, (newPage) => {
                 aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample"
               >
-                <div class="card-body py-0">
+                <div class="card-body px-0 py-0">
                   <ul class="list-unstyled">
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
+                    <li v-for="category in categories" :key="category">
+                      <a
+                        href="#"
+                        class="py-2 px-2 d-block fs-5 fw-bold"
+                        :class="{
+                          'text-primary-0': selectedCategory === category,
+                          'text-primary-2': selectedCategory !== category,
+                        }"
+                        @click.prevent="selectCategory(category)"
                       >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div
-                class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0"
-                id="headingTwo"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-              >
-                <div
-                  class="d-flex justify-content-between align-items-center pe-1"
-                >
-                  <h4 class="mb-0 text-primary-2">淡香水</h4>
-                  <font-awesome-icon :icon="['fas', 'chevron-down']" />
-                </div>
-              </div>
-              <div
-                id="collapseTwo"
-                class="collapse"
-                aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div
-                class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0"
-                id="headingThree"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-              >
-                <div
-                  class="d-flex justify-content-between align-items-center pe-1"
-                >
-                  <h4 class="mb-0 text-primary-2">香氛</h4>
-                  <font-awesome-icon :icon="['fas', 'chevron-down']" />
-                </div>
-              </div>
-              <div
-                id="collapseThree"
-                class="collapse"
-                aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
+                        {{ category }}
+                      </a>
                     </li>
                   </ul>
                 </div>
