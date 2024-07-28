@@ -26,16 +26,25 @@
         id="navbarNavAltMarkup"
       >
         <div class="navbar-nav">
-          <router-link to="/" class="nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
+          <router-link
+            to="/"
+            class="nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
             >Home<span class="sr-only">(current)</span></router-link
           >
-          <router-link to="/products" class="nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
+          <router-link
+            to="/products"
+            class="nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
             >Product</router-link
           >
-          <router-link to="/products-detail" class=" nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
-            >Detail</router-link
+          <router-link
+            to="/products/-O2ZJWs5lkueICLOooEE"
+            class="nav-item nav-link me-4 text-primary-2 text-primary-0-hover"
           >
-          <router-link  to="/shopping-cart" class="nav-item nav-link text-primary-2 text-primary-0-hover"
+            Detail
+          </router-link>
+          <router-link
+            to="/shopping-cart"
+            class="nav-item nav-link text-primary-2 text-primary-0-hover"
             ><font-awesome-icon :icon="['fas', 'shopping-cart']"
           /></router-link>
         </div>
@@ -43,5 +52,4 @@
     </nav>
   </div>
 </template>
-<style scoped>
-</style>
+<style scoped></style>

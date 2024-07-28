@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from 'vue'
 import TheNavbar from '../components/TheNavbar.vue'
 import TheFooter from '../components/TheFooter.vue'
 
