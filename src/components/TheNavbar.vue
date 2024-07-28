@@ -2,19 +2,10 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
-import axios from 'axios'
+import * as api from '@/services/api'
 
 const isLoggedIn = ref(false)
 const router = useRouter()
-
-const api = axios.create({
-  baseURL: import.meta.env.VITE_APP_API_URL,
-  withCredentials: true
-})
-
-onMounted(() => {
-  isLoggedIn.value = !!localStorage.getItem('token')
-})
 
 const handleUserIconClick = () => {
   if (isLoggedIn.value) {
@@ -28,8 +19,8 @@ const showUserMenu = () => {
   Swal.fire({
     title: '會員選項',
     html: `
-      <button id="goToCart" class="btn btn-primary mb-2">前往購物車</button><br>
-      <button id="logout" class="btn btn-danger">登出</button>
+      <button id="goToCart" class="btn btn-primary-2 mb-2">前往購物車</button><br>
+      <button id="logout" class="btn btn-primary-0">登出</button>
     `,
     showConfirmButton: false,
     showCancelButton: false,
@@ -74,13 +65,11 @@ const showLoginModal = () => {
 
 const login = async (username, password) => {
   try {
-    const response = await api.post('/admin/signin', {
-      username,
-      password
-    })
+    const response = await api.login(username, password)
+    console.log('Login success:', response.data)
     const { token, expired } = response.data
     document.cookie = `hexToken=${token}; expires=${new Date(expired)}; path=/;`
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', response.data.token)
     isLoggedIn.value = true
     Swal.fire('登入成功', '', 'success')
     router.push('/shopping-cart')
@@ -92,22 +81,15 @@ const login = async (username, password) => {
 
 const logout = async () => {
   try {
-    console.log('開始登出流程')
-    const response = await api.post('/logout')
-    console.log('登出 API 響應:', response)
-
+    await api.logout()
     handleLogoutSuccess()
   } catch (error) {
-    console.error('登出失敗:', error.response || error)
+    console.error('登出失敗:', error)
     if (error.response && error.response.status === 400) {
-      // 如果是 400 錯誤，我們假設用戶已經處於登出狀態
-      console.log('用戶可能已經處於登出狀態')
       handleLogoutSuccess()
     } else {
-      Swal.fire('登出失敗', '請檢查網絡連接並稍後再試', 'error')
+      Swal.fire('登出失敗', '請稍後再試', 'error')
     }
-  } finally {
-    console.log('登出流程結束')
   }
 }
 
@@ -115,22 +97,37 @@ const handleLogoutSuccess = () => {
   localStorage.removeItem('token')
   document.cookie = 'hexToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
   isLoggedIn.value = false
-  console.log('本地存儲和狀態已更新')
   Swal.fire('登出成功', '', 'success')
   router.push('/')
 }
 
 const checkLoginStatus = async () => {
   const token = localStorage.getItem('token')
+  console.log('Raw token:', token)
+
   if (!token) {
+    console.error('No token found')
     isLoggedIn.value = false
     return
   }
 
+  const tokenParts = token.split('.')
+  if (tokenParts.length !== 3) {
+    console.error('Token format is invalid')
+    handleLogoutSuccess()
+    return
+  }
+
+  const payload = JSON.parse(atob(tokenParts[1]))
+  console.log('Token payload:', payload)
+  if (payload.exp && Date.now() >= payload.exp * 1000) {
+    console.error('Token has expired')
+    handleLogoutSuccess()
+    return
+  }
+
   try {
-    // 這裡應該調用一個檢查 token 有效性的 API
-    // 假設這個 API 是 '/api/user/check'
-    await api.post('/api/user/check')
+    await api.checkLoginStatus()
     isLoggedIn.value = true
   } catch (error) {
     console.error('Token 無效:', error)
