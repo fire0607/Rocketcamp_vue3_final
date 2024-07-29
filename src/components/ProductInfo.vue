@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { useCartStore } from '@/stores/cartStore'
+import Swal from 'sweetalert2'
 
 const props = defineProps({
   product: {
@@ -9,6 +11,7 @@ const props = defineProps({
 })
 
 const quantity = ref(1)
+const cartStore = useCartStore()
 
 const decreaseQuantity = () => {
   if (quantity.value > 1) quantity.value--
@@ -19,7 +22,19 @@ const increaseQuantity = () => {
 }
 
 const addToCart = () => {
-  console.log(`Added ${quantity.value} of ${props.product.name} to cart`)
+  cartStore.addToCart(props.product, quantity.value)
+
+  Swal.fire({
+    title: '成功！',
+    text: `已將 ${quantity.value} 件 ${props.product.title} 加入購物車`,
+    icon: 'success',
+    confirmButtonText: '確定',
+    timer: 1500,
+    timerProgressBar: true,
+    showConfirmButton: false
+  })
+
+  quantity.value = 1
 }
 </script>
 <template>
