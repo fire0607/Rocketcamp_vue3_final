@@ -9,8 +9,7 @@ import {
   faPaperPlane,
   faChevronLeft,
   faCircleCheck,
-  faCircleDot,
-  faUserCircle
+  faCircleDot
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
@@ -34,8 +33,7 @@ library.add(
   faPaperPlane,
   faChevronLeft,
   faCircleCheck,
-  faCircleDot,
-  faUserCircle
+  faCircleDot
 )
 </script>
 <template>
