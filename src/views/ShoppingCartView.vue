@@ -93,6 +93,7 @@ onMounted(async () => {
                 </tr>
               </thead>
               <tbody>
+                <template v-if="cartStore.items.length">
                 <tr
                   v-for="item in cartStore.items"
                   :key="item.id"
@@ -149,6 +150,12 @@ onMounted(async () => {
                       :icon="['fas', 'times']"
                       class="btn btn-white-primary-0"
                     />
+                  </td>
+                </tr>
+              </template>
+              <tr v-else>
+                  <td colspan="4" class="text-center py-5">
+                    <p class="mb-0 text-primary-2 fs-4 fw-bold">購物車是空的，快來新增商品吧～</p>
                   </td>
                 </tr>
               </tbody>
