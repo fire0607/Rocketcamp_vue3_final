@@ -11,11 +11,10 @@ import loadEnv from './loadEnv'
 const INVALID_CHAR_REGEX = /[\x00-\x1F\x7F<>*#"{}|^[\]`?:&=+$,]/g
 const DRIVE_LETTER_REGEX = /^[a-z]:/i
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   loadEnv(mode)
   return ({
-    base: process.env.NODE_ENV === 'production' ? `/${process.env.REPOSITORY_NAME}/` : '/',
+    base: process.env.NODE_ENV === 'production' ? '/Rocketcamp_vue3_final/' : '/',
     plugins: [
       vue(),
       eslintPlugin({

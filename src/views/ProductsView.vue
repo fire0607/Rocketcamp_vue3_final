@@ -1,4 +1,84 @@
-<script setup></script>
+<script setup>
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
+import { useProducts } from '@/composables/useProducts'
+import ProductCard from '@/components/ProductCard.vue'
+
+const { products, loading, error, fetchProducts } = useProducts()
+
+const currentPage = ref(1)
+const itemsPerPage = 8
+const categories = ref([])
+const selectedCategory = ref('全部')
+
+const totalPages = computed(() => {
+  if (!Array.isArray(filteredProducts.value) || filteredProducts.value.length === 0) return 1
+  return Math.max(1, Math.ceil(filteredProducts.value.length / itemsPerPage))
+})
+
+const displayedPages = computed(() => {
+  const range = 2
+  let start = Math.max(currentPage.value - range, 1)
+  let end = Math.min(currentPage.value + range, totalPages.value)
+
+  if (end - start + 1 < range * 2 + 1) {
+    if (start === 1) {
+      end = Math.min(start + range * 2, totalPages.value)
+    } else {
+      start = Math.max(end - range * 2, 1)
+    }
+  }
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+})
+
+const changePage = (page) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page
+    nextTick(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
+  }
+}
+
+const paginatedProducts = computed(() => {
+  if (!Array.isArray(filteredProducts.value)) return []
+  const start = (currentPage.value - 1) * itemsPerPage
+  const end = start + itemsPerPage
+  return filteredProducts.value.slice(start, end)
+})
+
+const fetchCategories = () => {
+  if (Array.isArray(products.value)) {
+    categories.value = ['全部', ...new Set(products.value.map(product => product.category))]
+  }
+}
+
+const filteredProducts = computed(() => {
+  if (selectedCategory.value === '全部') {
+    return products.value
+  }
+  return products.value.filter(product => product.category === selectedCategory.value)
+})
+
+const selectCategory = (category) => {
+  selectedCategory.value = category
+  currentPage.value = 1
+}
+
+onMounted(async () => {
+  try {
+    await fetchProducts()
+    fetchCategories()
+    console.log('Products fetched:', products.value?.length)
+  } catch (e) {
+    console.error('Error fetching products:', e)
+  }
+})
+
+watch(currentPage, (newPage) => {
+  console.log('Current page changed to:', newPage)
+})
+</script>
 <template>
   <BaseLayout
     :show-navbar="true"
@@ -34,14 +114,11 @@
               <div
                 class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0"
                 id="headingOne"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
               >
                 <div
                   class="d-flex justify-content-between align-items-center pe-1"
                 >
-                  <h4 class="mb-0 text-primary-2">香水</h4>
-                  <font-awesome-icon :icon="['fas', 'chevron-down']" />
+                  <h4 class="mb-0 text-primary-2 fw-bold">產品類別</h4>
                 </div>
               </div>
               <div
@@ -50,134 +127,20 @@
                 aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample"
               >
-                <div class="card-body py-0">
+                <div class="card-body px-0 py-0">
                   <ul class="list-unstyled">
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
+                    <li v-for="category in categories" :key="category">
+                      <a
+                        href="#"
+                        class="py-2 px-2 d-block fs-5 fw-bold"
+                        :class="{
+                          'text-primary-0': selectedCategory === category,
+                          'text-primary-2': selectedCategory !== category,
+                        }"
+                        @click.prevent="selectCategory(category)"
                       >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div
-                class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0"
-                id="headingTwo"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-              >
-                <div
-                  class="d-flex justify-content-between align-items-center pe-1"
-                >
-                  <h4 class="mb-0 text-primary-2">淡香水</h4>
-                  <font-awesome-icon :icon="['fas', 'chevron-down']" />
-                </div>
-              </div>
-              <div
-                id="collapseTwo"
-                class="collapse"
-                aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-primary-2"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="card border-0">
-              <div
-                class="card-header px-0 py-4 bg-white border border-bottom-0 border-top border-start-0 border-end-0 rounded-0"
-                id="headingThree"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-              >
-                <div
-                  class="d-flex justify-content-between align-items-center pe-1"
-                >
-                  <h4 class="mb-0 text-primary-2">香氛</h4>
-                  <font-awesome-icon :icon="['fas', 'chevron-down']" />
-                </div>
-              </div>
-              <div
-                id="collapseThree"
-                class="collapse"
-                aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="card-body py-0">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
-                    </li>
-                    <li>
-                      <a href="#" class="py-2 d-block text-muted"
-                        >Lorem ipsum</a
-                      >
+                        {{ category }}
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -186,238 +149,59 @@
           </div>
         </div>
         <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail" class="text-primary-2">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0 text-primary-2">
-                    NT$1,080 <span class="text-primary-2"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="card border-0 mb-4 position-relative position-relative"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1591843336741-9f1238f66758?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80"
-                  class="card-img-top rounded-0"
-                  alt="..."
-                />
-                <a href="#" class="text-dark">
-                  <font-awesome-icon
-                    :icon="['far', 'heart']"
-                    class="position-absolute"
-                    style="right: 16px; top: 16px"
-                  />
-                </a>
-                <div class="card-body p-0">
-                  <h4 class="mb-0 mt-3">
-                    <router-link to="/products-detail">Lorem ipsum</router-link>
-                  </h4>
-                  <p class="card-text mb-0">
-                    NT$1,080 <span class="text-muted"><del>NT$1,200</del></span>
-                  </p>
-                  <p class="text-muted mt-3"></p>
-                </div>
-              </div>
+          <div v-if="loading" class="mt-5 my-auto text-center">
+            <h4 class="fw-bolder mb-5">Loading...</h4>
+          </div>
+          <div v-else-if="error">{{ error }}</div>
+          <div v-else class="row">
+            <div
+              v-for="product in paginatedProducts"
+              :key="product.id"
+              class="col-md-6"
+            >
+              <ProductCard :product="product" />
             </div>
           </div>
-          <nav class="d-flex justify-content-center">
+          <nav v-if="totalPages > 1" class="d-flex justify-content-center">
             <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
+              <!-- 上一頁按鈕 -->
+              <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                <a
+                  class="page-link px-3"
+                  href="#"
+                  @click.prevent="changePage(currentPage - 1)"
+                  aria-label="Previous"
+                >
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
+
+              <!-- 頁碼 -->
+              <li
+                v-for="page in displayedPages"
+                :key="page"
+                class="page-item"
+                :class="{ active: page === currentPage }"
+              >
+                <a
+                  class="page-link px-3"
+                  href="#"
+                  @click.prevent="changePage(page)"
+                  >{{ page }}</a
+                >
               </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
+
+              <!-- 下一頁按鈕 -->
+              <li
+                class="page-item"
+                :class="{ disabled: currentPage === totalPages }"
+              >
+                <a
+                  class="page-link px-3"
+                  href="#"
+                  @click.prevent="changePage(currentPage + 1)"
+                  aria-label="Next"
+                >
                   <span aria-hidden="true">&raquo;</span>
                 </a>
               </li>

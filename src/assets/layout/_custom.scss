@@ -133,3 +133,30 @@
       box-shadow: 0 0 0 0.2rem rgba($deep-taupe, 0.25);
     }
   }
+  .pagination {
+    .page-item {
+      .page-link {
+        color: $deep-taupe;
+        background-color: transparent;
+        border: 1px solid $deep-taupe;
+        border-radius: 0;
+  
+        &:hover {
+          background-color: $golden-wheat;
+          color: $deep-taupe;
+        }
+      }
+  
+      &.active .page-link {
+        background-color: $deep-taupe;
+        border-color: $deep-taupe;
+        color: #fff;
+      }
+  
+      &.disabled .page-link {
+        color: lighten($deep-taupe, 40%);
+        background-color: transparent;
+        border-color: lighten($deep-taupe, 40%);
+      }
+    }
+  }
