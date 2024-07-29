@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue'
 import { useCartStore } from '@/stores/cartStore'
 import SwiperSlider from '../components/SwiperSlider.vue'
 
@@ -12,6 +13,10 @@ const updateQuantity = (productId, newQuantity) => {
   cartStore.updateQuantity(productId, newQuantity)
 }
 
+onMounted(async () => {
+  await cartStore.fetchCart()
+})
+
 </script>
 <template>
   <BaseLayout
@@ -19,7 +24,9 @@ const updateQuantity = (productId, newQuantity) => {
     :show-footer="true"
     container-class="my-custom-container"
   >
-    <div class="container text-primary-2 lh-lg">
+  <div v-if="cartStore.isLoading">Loading...</div>
+  <div v-else-if="cartStore.error">Error: {{ cartStore.error }}</div>
+  <div v-else class="container text-primary-2 lh-lg">
       <div class="mt-3">
         <h3 class="mt-3 mb-4 text-primary-2">購物車</h3>
         <div class="row">
