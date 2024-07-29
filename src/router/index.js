@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useCartStore } from '@/stores/cartStore'
 import IndexPageView from '../views/IndexPageView.vue'
 import ProductsView from '../views/ProductsView.vue'
 import ProductsDetailView from '../views/ProductsDetailView.vue'
@@ -27,7 +28,12 @@ const routes = [
   {
     path: '/shopping-cart',
     name: 'ShoppingCart',
-    component: ShoppingCartView
+    component: ShoppingCartView,
+    beforeEnter: async (to, from, next) => {
+      const cartStore = useCartStore()
+      await cartStore.fetchCart()
+      next()
+    }
   },
   {
     path: '/checkout',
@@ -53,7 +59,10 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior () {
+    return { top: 0 }
+  }
 })
 
 export default router
