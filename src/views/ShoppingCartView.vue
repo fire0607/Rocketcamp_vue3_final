@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { onMounted, computed } from 'vue'
 import { useCartStore } from '@/stores/cartStore'
 import SwiperSlider from '../components/SwiperSlider.vue'
 import Swal from 'sweetalert2'
 
 const cartStore = useCartStore()
-
+const router = useRouter()
 const removeItem = async (productId) => {
   const result = await Swal.fire({
     title: '確定要刪除此商品嗎？',
@@ -54,6 +55,21 @@ const updateQuantity = async (productId, newQuantity) => {
         text: error.message
       })
     }
+  }
+}
+
+const isCartEmpty = computed(() => cartStore.items.length === 0)
+
+const handleCheckout = () => {
+  if (isCartEmpty.value) {
+    Swal.fire({
+      icon: 'warning',
+      title: '購物車是空的',
+      text: '請先將商品加入購物車再送出訂單。',
+      confirmButtonText: '確定'
+    })
+  } else {
+    router.push('/checkout')
   }
 }
 
@@ -212,9 +228,14 @@ onMounted(async () => {
                 <p class="mb-0 h4 fw-bold">合計</p>
                 <p class="mb-0 h4 fw-bold">NT${{ cartStore.totalAmount }}</p>
               </div>
-              <router-link to="/checkout" class="btn btn-primary-2 w-100 mt-4"
-                >送出訂單</router-link
+              <button
+                to="/checkout"
+                class="btn btn-primary-2 w-100 mt-4"
+                :class="{ 'btn-disabled': isCartEmpty }"
+                @click.prevent="handleCheckout"
               >
+                送出訂單
+              </button>
             </div>
           </div>
         </div>
@@ -226,4 +247,8 @@ onMounted(async () => {
     </div>
   </BaseLayout>
 </template>
-<style scoped></style>
+<style scoped>
+.btn-disabled {
+  opacity: 0.8;
+}
+</style>
