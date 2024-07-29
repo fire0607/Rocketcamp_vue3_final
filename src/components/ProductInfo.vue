@@ -21,20 +21,30 @@ const increaseQuantity = () => {
   quantity.value++
 }
 
-const addToCart = () => {
-  cartStore.addToCart(props.product, quantity.value)
+const addToCart = async () => {
+  try {
+    await cartStore.addToCart(props.product, quantity.value)
 
-  Swal.fire({
-    title: '成功！',
-    text: `已將 ${quantity.value} 件 ${props.product.title} 加入購物車`,
-    icon: 'success',
-    confirmButtonText: '確定',
-    timer: 1500,
-    timerProgressBar: true,
-    showConfirmButton: false
-  })
+    Swal.fire({
+      title: '成功！',
+      text: `已將 ${quantity.value} 件 ${props.product.title} 加入購物車`,
+      icon: 'success',
+      confirmButtonText: '確定',
+      timer: 1500,
+      timerProgressBar: true,
+      showConfirmButton: false
+    })
 
-  quantity.value = 1
+    quantity.value = 1
+  } catch (error) {
+    console.error(error) // 添加這行來在控制台顯示詳細錯誤信息
+    Swal.fire({
+      title: '錯誤',
+      text: error.message || '加入購物車失敗',
+      icon: 'error',
+      confirmButtonText: '確定'
+    })
+  }
 }
 </script>
 <template>

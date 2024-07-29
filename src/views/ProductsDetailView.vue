@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import ProductImage from '@/components/ProductImage.vue'
 import ProductInfo from '@/components/ProductInfo.vue'
 import SwiperSlider from '../components/SwiperSlider.vue'
@@ -8,6 +8,7 @@ import SwiperSlider from '../components/SwiperSlider.vue'
 const API_URL = import.meta.env.VITE_APP_API_URL
 const API_NAME = import.meta.env.VITE_APP_API_NAME
 const route = useRoute()
+// const productId = ref(route.params.id)
 const product = ref(null)
 const loading = ref(true)
 const error = ref(null)
@@ -39,6 +40,12 @@ onMounted(() => {
   if (route.params.id) {
     fetchProductDetails(route.params.id)
   }
+})
+
+watch(() => route.params.id, async (newId) => {
+  // productId.value = newId
+  await fetchProductDetails(newId)
+  console.log('Product ID changed to:', newId)
 })
 </script>
 
