@@ -21,7 +21,6 @@ const increaseQuantity = () => {
   quantity.value++
 }
 
-
 const addToCart = async () => {
   try {
     await cartStore.addToCart(props.product, quantity.value)
