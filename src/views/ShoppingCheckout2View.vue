@@ -1,9 +1,25 @@
 <script setup>
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cartStore'
 import Swal from 'sweetalert2'
 
 const cartStore = useCartStore()
+const router = useRouter()
+
+const handleCheckout = async () => {
+  try {
+    await cartStore.submitOrder()
+    await cartStore.clearCart()
+    router.push('/success')
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '訂單提交失敗',
+      text: error.message
+    })
+  }
+}
 
 onMounted(async () => {
   try {
@@ -239,7 +255,7 @@ onMounted(async () => {
           class="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100"
         >
         <router-link to="/shopping-cart" class="text-dark mt-md-0 mt-3"><font-awesome-icon :icon="['fas', 'chevron-left']" class="me-2"/> 返回購物車</router-link>
-        <router-link to="/success" class="btn btn-primary-2 py-2 px-3">下一步</router-link>
+        <button @click="handleCheckout" class="btn btn-primary-2 py-2 px-3">下一步</button>
         </div>
       </div>
     </div>

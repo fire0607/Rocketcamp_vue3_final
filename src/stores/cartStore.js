@@ -80,6 +80,27 @@ export const useCartStore = defineStore('cart', {
       } finally {
         this.isLoading = false
       }
+    },
+    async submitOrder () {
+      return new Promise(resolve => setTimeout(resolve, 1000))
+    },
+    async clearCart () {
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await cartAPI.clearCart()
+        if (response.data.success) {
+          this.items = []
+        } else {
+          throw new Error(response.data.message || '清空購物車失敗')
+        }
+      } catch (error) {
+        console.error('Error clearing cart:', error)
+        this.error = error.response?.data?.message || error.message || '清空購物車失敗'
+        throw error
+      } finally {
+        this.isLoading = false
+      }
     }
   },
   getters: {
