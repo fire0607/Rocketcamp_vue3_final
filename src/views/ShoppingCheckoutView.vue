@@ -67,8 +67,11 @@ onMounted(async () => {
     <div class="row flex-row-reverse justify-content-center pb-5">
       <div class="col-md-4">
         <div class="border p-4 mb-4">
-          <div v-for="item in cartStore.items"
-          :key="item.id" class="d-flex mt-2">
+          <div
+            v-for="item in cartStore.items"
+            :key="item.id"
+            class="d-flex mt-2"
+          >
             <img
               :src="item.product.imageUrl"
               alt=""
@@ -89,7 +92,9 @@ onMounted(async () => {
                 <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
                   小計
                 </th>
-                <td class="text-end border-0 px-0 pt-4">NT${{ cartStore.totalAmount }}</td>
+                <td class="text-end border-0 px-0 pt-4">
+                  NT${{ cartStore.totalAmount }}
+                </td>
               </tr>
               <tr>
                 <th

@@ -9,6 +9,6 @@ defineProps({
 
 <template>
   <div class="product-image col-md-7">
-    <img :src="image" class="img-fluid" alt="Product image">
+    <img :src="image" class="img-fluid" alt="Product image" />
   </div>
 </template>

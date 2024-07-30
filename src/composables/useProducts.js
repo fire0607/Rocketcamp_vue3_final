@@ -6,18 +6,17 @@ export function useProducts () {
   const loading = ref(false)
   const error = ref(null)
 
+  // 取得產品資料
   const fetchProducts = async () => {
     loading.value = true
     error.value = null
     try {
       const response = await getProducts()
-      console.log('API response:', response)
       if (Array.isArray(response.data.products)) {
         products.value = response.data.products
       } else {
         throw new Error('Unexpected API response format')
       }
-      console.log('Products:', products.value)
     } catch (err) {
       console.error('Error fetching products:', err)
       error.value = err.message || 'Failed to fetch products'

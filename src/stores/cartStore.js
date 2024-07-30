@@ -16,7 +16,6 @@ export const useCartStore = defineStore('cart', {
           product_id: product.id,
           qty: quantity
         })
-        console.log('API Response:', response.data) // 添加這行
         if (response.data.success) {
           this.items = response.data.data.carts || []
         } else {
@@ -70,7 +69,7 @@ export const useCartStore = defineStore('cart', {
       try {
         const response = await cartAPI.removeCartItem(productId)
         if (response.data.success) {
-          await this.fetchCart() // 重新獲取購物車數據
+          await this.fetchCart()
         } else {
           throw new Error(response.data.message || '移除商品失敗')
         }
