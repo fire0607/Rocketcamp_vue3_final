@@ -1,13 +1,15 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import ProductImage from '@/components/ProductImage.vue'
 import ProductInfo from '@/components/ProductInfo.vue'
 import SwiperSlider from '../components/SwiperSlider.vue'
 
 const API_URL = import.meta.env.VITE_APP_API_URL
 const API_NAME = import.meta.env.VITE_APP_API_NAME
+
 const route = useRoute()
+
 const product = ref(null)
 const loading = ref(true)
 const error = ref(null)
@@ -17,14 +19,12 @@ const fetchProductDetails = async (productId) => {
   error.value = null
   try {
     const response = await fetch(`${API_URL}/api/${API_NAME}/product/${productId}`)
-    console.log('Response status:', response)
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
     const data = await response.json()
-    console.log('Response data:', data)
 
     product.value = data.product
   } catch (err) {
@@ -40,6 +40,10 @@ onMounted(() => {
     fetchProductDetails(route.params.id)
   }
 })
+
+watch(() => route.params.id, async (newId) => {
+  await fetchProductDetails(newId)
+})
 </script>
 
 <template>
@@ -51,7 +55,9 @@ onMounted(() => {
     <div v-if="loading" class="mt-5 my-auto text-center">
       <h4 class="fw-bolder mb-5">Loading...</h4>
     </div>
-    <div v-else-if="error" class="mt-5 col-md-4 text-center">Error: {{ error }}</div>
+    <div v-else-if="error" class="mt-5 col-md-4 text-center">
+      Error: {{ error }}
+    </div>
     <div v-if="product" class="container text-primary-2 lh-lg">
       <div class="row align-items-center">
         <ProductImage :image="product.imageUrl" />

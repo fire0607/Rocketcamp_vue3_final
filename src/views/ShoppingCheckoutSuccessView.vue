@@ -1,4 +1,39 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import { useCartStore } from '@/stores/cartStore'
+import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
+
+const cartStore = useCartStore()
+const router = useRouter()
+
+onMounted(async () => {
+  try {
+    await cartStore.fetchCart()
+    if (cartStore.items.length > 0) {
+      await cartStore.clearCart()
+    }
+    showSuccessPopup()
+    setTimeout(() => {
+      router.push('/')
+    }, 5000)
+  } catch (error) {
+    console.error('Error in success page:', error)
+    router.push('/')
+  }
+})
+
+function showSuccessPopup () {
+  Swal.fire({
+    title: '訂單已送出！',
+    text: '3秒後將返回首頁',
+    icon: 'success',
+    timer: 3000,
+    timerProgressBar: true,
+    showConfirmButton: false
+  })
+}
+</script>
 <template>
   <div class="position-relative d-flex">
     <div class="container d-flex flex-column" style="min-height: 100vh">
@@ -6,7 +41,7 @@
         <router-link to="/" class="navbar-brand"
           ><h1>
             <img
-              src="/image/morning-dew-high-resolution-logo-transparent.png"
+              src="https://imgur.com/HV6rgTW.png"
               alt="清晨微光 Morning Dew"
               height="45px"
             /></h1
@@ -34,7 +69,7 @@
         z-index: -1;
         min-height: 100vh;
         right: 0;
-        background-image: url(/image/banner.png);
+        background-image: url(https://imgur.com/EKvvsp7.png);
         background-size: 150%;
         background-color: rgb(0, 0, 0, 0.1);
         background-blend-mode: multiply;

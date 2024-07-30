@@ -1,12 +1,48 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useCartStore } from '@/stores/cartStore'
+import Swal from 'sweetalert2'
+
+const cartStore = useCartStore()
+const router = useRouter()
+
+// 點擊送出訂單後清空購物車
+const handleCheckout = async () => {
+  try {
+    await cartStore.submitOrder() // 尚未接後台訂單API
+    await cartStore.clearCart()
+    router.push('/success')
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '訂單提交失敗',
+      text: error.message
+    })
+  }
+}
+
+onMounted(async () => {
+  try {
+    await cartStore.fetchCart()
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '載入購物車失敗',
+      text: error.message
+    })
+  }
+})
+</script>
 <template>
   <div class="container text-primary-2">
     <div class="row justify-content-center">
       <div class="col-md-10">
         <nav class="navbar navbar-expand-lg navbar-light px-0">
-          <router-link to="/" class="navbar-brand"><h1>
+          <router-link to="/" class="navbar-brand"
+            ><h1>
               <img
-                src="/image/morning-dew-high-resolution-logo-transparent.png"
+                src="https://imgur.com/HV6rgTW.png"
                 alt="清晨微光 Morning Dew"
                 height="45px"
               /></h1
@@ -15,15 +51,24 @@
             class="list-unstyled mb-0 ms-md-auto d-flex align-items-center justify-content-between justify-content-md-end w-100 mt-md-0 mt-4"
           >
             <li class="me-lg-5 position-relative custom-step-line">
-              <font-awesome-icon :icon="['fas', 'circle-check']" class="d-md-inline d-block text-center" />
+              <font-awesome-icon
+                :icon="['fas', 'circle-check']"
+                class="d-md-inline d-block text-center"
+              />
               <span class="text-nowrap">購物車</span>
             </li>
             <li class="me-lg-5 position-relative custom-step-line">
-              <font-awesome-icon :icon="['fas', 'circle-check']" class="d-md-inline d-block text-center ms-4" />
+              <font-awesome-icon
+                :icon="['fas', 'circle-check']"
+                class="d-md-inline d-block text-center ms-4"
+              />
               <span class="text-nowrap">填寫資料</span>
             </li>
             <li>
-              <font-awesome-icon :icon="['fas', 'circle-dot']" class="d-md-inline d-block text-center ms-4" />
+              <font-awesome-icon
+                :icon="['fas', 'circle-dot']"
+                class="d-md-inline d-block text-center ms-4"
+              />
               <span class="text-nowrap">確認訂單</span>
             </li>
           </ul>
@@ -38,34 +83,23 @@
     <div class="row flex-row-reverse justify-content-center pb-5">
       <div class="col-md-4">
         <div class="border p-4 mb-4">
-          <div class="d-flex">
+          <div
+            v-for="item in cartStore.items"
+            :key="item.id"
+            class="d-flex mt-2"
+          >
             <img
-              src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+              :src="item.product.imageUrl"
               alt=""
               class="me-2"
               style="width: 48px; height: 48px; object-fit: cover"
             />
             <div class="w-100">
               <div class="d-flex justify-content-between">
-                <p class="mb-0 fw-bold">Lorem ipsum</p>
-                <p class="mb-0">NT$12,000</p>
+                <p class="mb-0 fw-bold">{{ item.product.title }}</p>
+                <p class="mb-0">NT${{ item.final_total }}</p>
               </div>
-              <p class="mb-0 fw-bold">x1</p>
-            </div>
-          </div>
-          <div class="d-flex mt-2">
-            <img
-              src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-              alt=""
-              class="me-2"
-              style="width: 48px; height: 48px; object-fit: cover"
-            />
-            <div class="w-100">
-              <div class="d-flex justify-content-between">
-                <p class="mb-0 fw-bold">Lorem ipsum</p>
-                <p class="mb-0">NT$12,000</p>
-              </div>
-              <p class="mb-0 fw-bold">x1</p>
+              <p class="mb-0 fw-bold">x{{ item.qty }}</p>
             </div>
           </div>
           <table class="table mt-4 border-top border-bottom text-muted">
@@ -74,7 +108,9 @@
                 <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
                   小計
                 </th>
-                <td class="text-end border-0 px-0 pt-4">NT$24,000</td>
+                <td class="text-end border-0 px-0 pt-4">
+                  NT${{ cartStore.totalAmount }}
+                </td>
               </tr>
               <tr>
                 <th
@@ -88,8 +124,8 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-between mt-4">
-            <p class="mb-0 h4 fw-bold">總計</p>
-            <p class="mb-0 h4 fw-bold">NT$24,000</p>
+            <p class="mb-0 h4 fw-bold">合計</p>
+            <p class="mb-0 h4 fw-bold">NT${{ cartStore.totalAmount }}</p>
           </div>
         </div>
       </div>
@@ -127,9 +163,7 @@
                   />
                 </div>
                 <div class="mb-0">
-                  <label for="Lorem ipsum2" class="text-muted mb-0"
-                    >備註</label
-                  >
+                  <label for="Lorem ipsum2" class="text-muted mb-0">備註</label>
                   <input
                     type="text"
                     class="form-control"
@@ -172,9 +206,7 @@
                   />
                 </div>
                 <div class="mb-0">
-                  <label for="Lorem ipsum2" class="text-muted mb-0"
-                    >備註</label
-                  >
+                  <label for="Lorem ipsum2" class="text-muted mb-0">備註</label>
                   <input
                     type="text"
                     class="form-control"
@@ -217,9 +249,7 @@
                   />
                 </div>
                 <div class="mb-0">
-                  <label for="Lorem ipsum2" class="text-muted mb-0"
-                    >備註</label
-                  >
+                  <label for="Lorem ipsum2" class="text-muted mb-0">備註</label>
                   <input
                     type="text"
                     class="form-control"
@@ -234,8 +264,13 @@
         <div
           class="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100"
         >
-        <router-link to="/shopping-cart" class="text-dark mt-md-0 mt-3"><font-awesome-icon :icon="['fas', 'chevron-left']" class="me-2"/> 返回購物車</router-link>
-        <router-link to="/success" class="btn btn-primary-2 py-2 px-3">下一步</router-link>
+          <router-link to="/shopping-cart" class="text-dark mt-md-0 mt-3"
+            ><font-awesome-icon :icon="['fas', 'chevron-left']" class="me-2" />
+            返回購物車</router-link
+          >
+          <button @click="handleCheckout" class="btn btn-primary-2 py-2 px-3">
+            下一步
+          </button>
         </div>
       </div>
     </div>

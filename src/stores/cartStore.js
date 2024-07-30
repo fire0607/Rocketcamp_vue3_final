@@ -1,34 +1,110 @@
 import { defineStore } from 'pinia'
+import { cartAPI } from '@/services/api'
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
-    items: []
+    items: [],
+    isLoading: false,
+    error: null
   }),
   actions: {
-    addToCart (product, quantity = 1) {
-      const existingItem = this.items.find(item => item.id === product.id)
-      if (existingItem) {
-        existingItem.quantity += quantity
-      } else {
-        this.items.push({ ...product, quantity })
+    async addToCart (product, quantity = 1) {
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await cartAPI.addToCart({
+          product_id: product.id,
+          qty: quantity
+        })
+        if (response.data.success) {
+          this.items = response.data.data.carts || []
+        } else {
+          throw new Error(response.data.message)
+        }
+      } catch (error) {
+        console.error('Error in addToCart:', error)
+        this.error = error.response?.data?.message || error.message || '加入購物車失敗'
+        throw error
+      } finally {
+        this.isLoading = false
       }
     },
-    removeFromCart (productId) {
-      const index = this.items.findIndex(item => item.id === productId)
-      if (index > -1) {
-        this.items.splice(index, 1)
+    async fetchCart () {
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await cartAPI.getCart()
+        if (response.data.success) {
+          this.items = response.data.data.carts || []
+        } else {
+          throw new Error(response.data.message || '獲取購物車失敗')
+        }
+      } catch (error) {
+        console.error('Error fetching cart:', error)
+        this.error = error.message
+        throw error
+      } finally {
+        this.isLoading = false
       }
     },
-    updateQuantity (productId, quantity) {
-      const item = this.items.find(item => item.id === productId)
-      if (item) {
-        item.quantity = quantity
+    async updateQuantity (productId, quantity) {
+      try {
+        const response = await cartAPI.updateCartItem(productId, {
+          product_id: productId,
+          qty: quantity
+        })
+        if (response.data.success) {
+          await this.fetchCart()
+        } else {
+          throw new Error(response.data.message || '更新數量失敗')
+        }
+      } catch (error) {
+        console.error('Error updating quantity:', error)
+        throw error
+      }
+    },
+    async removeCartItem (productId) {
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await cartAPI.removeCartItem(productId)
+        if (response.data.success) {
+          await this.fetchCart()
+        } else {
+          throw new Error(response.data.message || '移除商品失敗')
+        }
+      } catch (error) {
+        console.error('Error removing item from cart:', error)
+        throw error
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async submitOrder () {
+      return new Promise(resolve => setTimeout(resolve, 1000))
+    },
+    async clearCart () {
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await cartAPI.clearCart()
+        if (response.data.success) {
+          this.items = []
+        } else {
+          throw new Error(response.data.message || '清空購物車失敗')
+        }
+      } catch (error) {
+        console.error('Error clearing cart:', error)
+        this.error = error.response?.data?.message || error.message || '清空購物車失敗'
+        throw error
+      } finally {
+        this.isLoading = false
       }
     }
   },
   getters: {
     totalAmount () {
-      return this.items.reduce((total, item) => total + item.price * item.quantity, 0)
+      return this.items.reduce((total, item) => total + item.final_total, 0)
     }
   }
 })

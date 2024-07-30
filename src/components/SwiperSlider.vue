@@ -9,35 +9,35 @@ const products = ref([
   {
     id: '-O2ZKO2TBg5a6cHwNSLT',
     name: '晨曦微光',
-    image: '/image/product-1.png',
+    image: 'https://imgur.com/y1xxOqY.png',
     price: 2000,
     originalPrice: 2320
   },
   {
     id: '-O2ZKz3kzt_sh_RLZPga',
     name: '露珠輕語',
-    image: '/image/product-2.png',
+    image: 'https://imgur.com/u4zKCig.png',
     price: 2300,
     originalPrice: 2450
   },
   {
     id: '-O2ZLTWxBfv8JYSYKLay',
     name: '晨風綠意',
-    image: '/image/product-3.png',
+    image: 'https://imgur.com/jEpLp1A.png',
     price: 2000,
     originalPrice: 2320
   },
   {
     id: '-O2ZMWC1B1xmgzIee9OH',
     name: '微風拂曉',
-    image: '/image/product-4.png',
+    image: 'https://imgur.com/vuSgsmx.png',
     price: 2300,
     originalPrice: 2450
   },
   {
     id: '-O2ZMjmErQEAfiYf6DlQ',
     name: '晨光花影',
-    image: '/image/product-5.png',
+    image: 'https://imgur.com/u4zKCig.png',
     price: 2000,
     originalPrice: 2320
   }
