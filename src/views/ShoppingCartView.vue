@@ -7,6 +7,8 @@ import Swal from 'sweetalert2'
 
 const cartStore = useCartStore()
 const router = useRouter()
+
+// 移除購物車產品
 const removeItem = async (productId) => {
   const result = await Swal.fire({
     title: '確定要刪除此商品嗎？',
@@ -37,7 +39,7 @@ const removeItem = async (productId) => {
     }
   }
 }
-
+// 更新購物車數量
 const updateQuantity = async (productId, newQuantity) => {
   if (newQuantity > 0) {
     try {
@@ -46,7 +48,7 @@ const updateQuantity = async (productId, newQuantity) => {
         icon: 'success',
         title: '數量已更新',
         showConfirmButton: false,
-        timer: 1500
+        timer: 1200
       })
     } catch (error) {
       Swal.fire({
@@ -58,8 +60,8 @@ const updateQuantity = async (productId, newQuantity) => {
   }
 }
 
+// 攔截空購物車送出
 const isCartEmpty = computed(() => cartStore.items.length === 0)
-
 const handleCheckout = () => {
   if (isCartEmpty.value) {
     Swal.fire({
@@ -110,68 +112,70 @@ onMounted(async () => {
               </thead>
               <tbody>
                 <template v-if="cartStore.items.length">
-                <tr
-                  v-for="item in cartStore.items"
-                  :key="item.id"
-                  class="border-bottom border-top"
-                >
-                  <th
-                    scope="row"
-                    class="border-0 px-0 font-weight-normal py-4 text-primary-2"
+                  <tr
+                    v-for="item in cartStore.items"
+                    :key="item.id"
+                    class="border-bottom border-top"
                   >
-                    <img
-                      :src="item.product.imageUrl"
-                      alt=""
-                      style="width: 72px; height: 72px; object-fit: cover"
-                    />
-                    <p class="mb-0 fw-bold ms-3 d-inline-block">
-                      {{ item.product.title }}
-                    </p>
-                  </th>
-                  <td class="border-0 align-middle" style="max-width: 160px">
-                    <div class="input-group pe-5">
-                      <div class="input-group-prepend">
-                        <button
-                          @click="updateQuantity(item.id, item.qty - 1)"
-                          class="btn btn-white-primary-0 border-0 py-2"
-                          type="button"
-                        >
-                          <font-awesome-icon :icon="['fas', 'minus']" />
-                        </button>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control border-0 text-center my-auto shadow-none"
-                        v-model="item.qty"
+                    <th
+                      scope="row"
+                      class="border-0 px-0 font-weight-normal py-4 text-primary-2"
+                    >
+                      <img
+                        :src="item.product.imageUrl"
+                        alt=""
+                        style="width: 72px; height: 72px; object-fit: cover"
                       />
-                      <div class="input-group-append">
-                        <button
-                          @click="updateQuantity(item.id, item.qty + 1)"
-                          class="btn btn-white-primary-0 border-0 py-2"
-                          type="button"
-                        >
-                          <font-awesome-icon :icon="['fas', 'plus']" />
-                        </button>
+                      <p class="mb-0 fw-bold ms-3 d-inline-block">
+                        {{ item.product.title }}
+                      </p>
+                    </th>
+                    <td class="border-0 align-middle" style="max-width: 160px">
+                      <div class="input-group pe-5">
+                        <div class="input-group-prepend">
+                          <button
+                            @click="updateQuantity(item.id, item.qty - 1)"
+                            class="btn btn-white-primary-0 border-0 py-2"
+                            type="button"
+                          >
+                            <font-awesome-icon :icon="['fas', 'minus']" />
+                          </button>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control border-0 text-center my-auto shadow-none"
+                          v-model="item.qty"
+                        />
+                        <div class="input-group-append">
+                          <button
+                            @click="updateQuantity(item.id, item.qty + 1)"
+                            class="btn btn-white-primary-0 border-0 py-2"
+                            type="button"
+                          >
+                            <font-awesome-icon :icon="['fas', 'plus']" />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td class="border-0 align-middle">
-                    <p class="mb-0 ms-auto text-primary-2">
-                      NT${{ item.final_total }}
-                    </p>
-                  </td>
-                  <td class="border-0 align-middle">
-                    <font-awesome-icon
-                      @click="removeItem(item.id)"
-                      :icon="['fas', 'times']"
-                      class="btn btn-white-primary-0"
-                    />
-                  </td>
-                </tr>
-              </template>
-              <tr v-else>
+                    </td>
+                    <td class="border-0 align-middle">
+                      <p class="mb-0 ms-auto text-primary-2">
+                        NT${{ item.final_total }}
+                      </p>
+                    </td>
+                    <td class="border-0 align-middle">
+                      <font-awesome-icon
+                        @click="removeItem(item.id)"
+                        :icon="['fas', 'times']"
+                        class="btn btn-white-primary-0"
+                      />
+                    </td>
+                  </tr>
+                </template>
+                <tr v-else>
                   <td colspan="4" class="text-center py-5">
-                    <p class="mb-0 text-primary-2 fs-4 fw-bold">購物車是空的，快來新增商品吧～</p>
+                    <p class="mb-0 text-primary-2 fs-4 fw-bold">
+                      購物車是空的，快來新增商品吧～
+                    </p>
                   </td>
                 </tr>
               </tbody>

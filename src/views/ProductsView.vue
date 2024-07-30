@@ -69,7 +69,6 @@ onMounted(async () => {
   try {
     await fetchProducts()
     fetchCategories()
-    console.log('Products fetched:', products.value?.length)
   } catch (e) {
     console.error('Error fetching products:', e)
   }

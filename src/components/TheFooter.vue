@@ -8,9 +8,17 @@
         >
           <p class="mb-0 fw-bold text-primary-2">留下您的mail，與我們聯繫</p>
           <div class="input-group w-md-50 mt-md-0 mt-3">
-            <input type="text" class="form-control rounded-0 custom-input" placeholder="" />
+            <input
+              type="text"
+              class="form-control rounded-0 custom-input"
+              placeholder=""
+            />
             <div class="input-group-append">
-              <button class="btn btn-primary-2 rounded-0" type="button" id="search">
+              <button
+                class="btn btn-primary-2 rounded-0"
+                type="button"
+                id="search"
+              >
                 送出
               </button>
             </div>
@@ -62,20 +70,4 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-// .bg-light {
-//   background-color: #dce0c6 !important;
-//   p {
-//     color: #433c36 !important;
-//   }
-//   .btn {
-//     background-color: #433c36 !important;
-//   }
-// }
-// .bg-dark {
-//   background-color: #433c36 !important;
-//   p,a{
-//     color: #dce0c6 !important;
-//   }
-// }
-</style>
+<style lang="scss" scoped></style>

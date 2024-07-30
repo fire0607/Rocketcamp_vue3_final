@@ -30,14 +30,14 @@ const addToCart = async () => {
       text: `已將 ${quantity.value} 件 ${props.product.title} 加入購物車`,
       icon: 'success',
       confirmButtonText: '確定',
-      timer: 1500,
+      timer: 1200,
       timerProgressBar: true,
       showConfirmButton: false
     })
 
     quantity.value = 1
   } catch (error) {
-    console.error(error) // 添加這行來在控制台顯示詳細錯誤信息
+    console.error(error)
     Swal.fire({
       title: '錯誤',
       text: error.message || '加入購物車失敗',

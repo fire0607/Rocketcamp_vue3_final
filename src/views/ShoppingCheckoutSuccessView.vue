@@ -25,10 +25,10 @@ onMounted(async () => {
 
 function showSuccessPopup () {
   Swal.fire({
-    title: '付款成功！',
-    text: '5秒後將返回首頁',
+    title: '訂單已送出！',
+    text: '3秒後將返回首頁',
     icon: 'success',
-    timer: 5000,
+    timer: 3000,
     timerProgressBar: true,
     showConfirmButton: false
   })
