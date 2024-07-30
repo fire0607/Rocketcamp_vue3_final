@@ -1,8 +1,8 @@
 # Vue3期末作業
-以六角學院提供電商版型做修改，練習以Vue3製作完整的網站功能。
+以六角學院提供電商版型做修改，透過Vue練習串接API並製作電商網站。
 
-# [預覽連結](https://fire0607.github.io/Rocketcamp_vue3_final/)
+# [預覽連結](https://fire0607.github.io)
 
 ## 主題
-香水品牌
+虛擬的香水品牌
 
