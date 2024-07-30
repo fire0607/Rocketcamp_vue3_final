@@ -96,7 +96,7 @@ watch(currentPage, (newPage) => {
           bottom: 0;
           left: 0;
           right: 0;
-          background-image: url('image/banner.png');
+          background-image: url('https://imgur.com/EKvvsp7.png');
           background-position: 60% 60%;
           opacity: 0.1;
         "

@@ -21,7 +21,7 @@
           bottom: 0;
           left: 0;
           right: 0;
-          background-image: url('/image/main-product.png');
+          background-image: url('https://imgur.com/13gsyOU.png');
           background-repeat: no-repeat;
           background-size: 100%;
           background-position: 50% 50%;

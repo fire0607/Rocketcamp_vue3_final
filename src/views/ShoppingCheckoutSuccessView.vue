@@ -41,7 +41,7 @@ function showSuccessPopup () {
         <router-link to="/" class="navbar-brand"
           ><h1>
             <img
-              src="/image/morning-dew-high-resolution-logo-transparent.png"
+              src="https://imgur.com/HV6rgTW.png"
               alt="清晨微光 Morning Dew"
               height="45px"
             /></h1
@@ -69,7 +69,7 @@ function showSuccessPopup () {
         z-index: -1;
         min-height: 100vh;
         right: 0;
-        background-image: url(/image/banner.png);
+        background-image: url(https://imgur.com/EKvvsp7.png);
         background-size: 150%;
         background-color: rgb(0, 0, 0, 0.1);
         background-blend-mode: multiply;
