@@ -12,7 +12,7 @@ import TheNavbar from '../components/TheNavbar.vue'
         bottom: 0;
         left: 0;
         right: 0;
-        background-image: url('/image/banner.png');
+        background-image: url('https://imgur.com/EKvvsp7.png');
         background-position: 60% 70%;
         opacity: 0.1;
         pointer-events: none;
@@ -36,7 +36,7 @@ import TheNavbar from '../components/TheNavbar.vue'
       <div class="col-md-4 mt-md-4 ">
         <div class="card border-0 mb-4">
           <img
-            src="/image/product-1.png"
+            src="https://imgur.com/NIphIqN.png"
             class="card-img-top rounded-0"
             alt="..."
           />
@@ -53,7 +53,7 @@ import TheNavbar from '../components/TheNavbar.vue'
       <div class="col-md-4 mt-md-4">
         <div class="card border-0 mb-4">
           <img
-            src="/image/product-2.png"
+            src="https://imgur.com/jEpLp1A.png"
             class="card-img-top rounded-0"
             alt="..."
           />
@@ -70,7 +70,7 @@ import TheNavbar from '../components/TheNavbar.vue'
       <div class="col-md-4 mt-md-4">
         <div class="card border-0 mb-4">
           <img
-            src="/image/product-3.png"
+            src="https://imgur.com/vuSgsmx.png"
             class="card-img-top rounded-0"
             alt="..."
           />
@@ -113,7 +113,7 @@ import TheNavbar from '../components/TheNavbar.vue'
     <div class="row">
       <div class="col-md-6">
         <img
-          src="/image/main-product.png"
+          src="https://imgur.com/13gsyOU.png"
           alt=""
           class="img-fluid"
         />
@@ -128,7 +128,7 @@ import TheNavbar from '../components/TheNavbar.vue'
     <div class="row flex-row-reverse justify-content-between mt-4">
       <div class="col-md-6">
         <img
-          src="/image/main-product-2.png"
+          src="https://imgur.com/KbsVLsj.png"
           alt=""
           class="img-fluid"
         />

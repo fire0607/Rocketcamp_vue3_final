@@ -5,7 +5,7 @@
       <router-link to="/" class="navbar-brand"
         ><h1>
           <img
-            src="/image/morning-dew-high-resolution-logo-transparent.png"
+            src="https://imgur.com/HV6rgTW.png"
             alt="清晨微光 Morning Dew"
             height="45px"
           /></h1
