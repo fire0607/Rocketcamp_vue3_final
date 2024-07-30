@@ -1,4 +1,23 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import { useCartStore } from '@/stores/cartStore'
+import Swal from 'sweetalert2'
+
+const cartStore = useCartStore()
+
+onMounted(async () => {
+  try {
+    await cartStore.fetchCart()
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '載入購物車失敗',
+      text: error.message
+    })
+  }
+})
+
+</script>
 <template>
   <div class="container text-primary-2">
     <div class="row justify-content-center">
@@ -48,34 +67,20 @@
     <div class="row flex-row-reverse justify-content-center pb-5">
       <div class="col-md-4">
         <div class="border p-4 mb-4">
-          <div class="d-flex">
+          <div v-for="item in cartStore.items"
+          :key="item.id" class="d-flex mt-2">
             <img
-              src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
+              :src="item.product.imageUrl"
               alt=""
               class="me-2"
               style="width: 48px; height: 48px; object-fit: cover"
             />
             <div class="w-100">
               <div class="d-flex justify-content-between">
-                <p class="mb-0 fw-bold">Lorem ipsum</p>
-                <p class="mb-0">NT$12,000</p>
+                <p class="mb-0 fw-bold">{{ item.product.title }}</p>
+                <p class="mb-0">NT${{ item.final_total }}</p>
               </div>
-              <p class="mb-0 fw-bold">x1</p>
-            </div>
-          </div>
-          <div class="d-flex mt-2">
-            <img
-              src="https://images.unsplash.com/photo-1502743780242-f10d2ce370f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1916&q=80"
-              alt=""
-              class="me-2"
-              style="width: 48px; height: 48px; object-fit: cover"
-            />
-            <div class="w-100">
-              <div class="d-flex justify-content-between">
-                <p class="mb-0 fw-bold">Lorem ipsum</p>
-                <p class="mb-0">NT$12,000</p>
-              </div>
-              <p class="mb-0 fw-bold">x1</p>
+              <p class="mb-0 fw-bold">x{{ item.qty }}</p>
             </div>
           </div>
           <table class="table mt-4 border-top border-bottom text-muted">
@@ -84,7 +89,7 @@
                 <th scope="row" class="border-0 px-0 pt-4 font-weight-normal">
                   小計
                 </th>
-                <td class="text-end border-0 px-0 pt-4">NT$24,000</td>
+                <td class="text-end border-0 px-0 pt-4">NT${{ cartStore.totalAmount }}</td>
               </tr>
               <tr>
                 <th
@@ -98,8 +103,8 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-between mt-4">
-            <p class="mb-0 h4 fw-bold">總計</p>
-            <p class="mb-0 h4 fw-bold">NT$24,000</p>
+            <p class="mb-0 h4 fw-bold">合計</p>
+            <p class="mb-0 h4 fw-bold">NT${{ cartStore.totalAmount }}</p>
           </div>
         </div>
       </div>
@@ -114,6 +119,7 @@
               id="ContactMail"
               aria-describedby="emailHelp"
               placeholder="example@gmail.com"
+              required
             />
           </div>
           <p class="mt-4 fs-4 fw-bold">顧客資料</p>
@@ -124,6 +130,7 @@
               class="form-control"
               id="ContactName"
               placeholder="Carmen A. Rose"
+              required
             />
           </div>
           <div class="mb-2">
@@ -133,6 +140,7 @@
               class="form-control"
               id="ContactPhone"
               placeholder="09-123456789"
+              required
             />
           </div>
           <div class="mb-2">

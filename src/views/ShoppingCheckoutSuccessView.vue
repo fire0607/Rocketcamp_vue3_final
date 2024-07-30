@@ -1,4 +1,39 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue'
+import { useCartStore } from '@/stores/cartStore'
+import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
+
+const cartStore = useCartStore()
+const router = useRouter()
+
+onMounted(async () => {
+  try {
+    await cartStore.fetchCart()
+    if (cartStore.items.length > 0) {
+      await cartStore.clearCart()
+    }
+    showSuccessPopup()
+    setTimeout(() => {
+      router.push('/')
+    }, 5000)
+  } catch (error) {
+    console.error('Error in success page:', error)
+    router.push('/')
+  }
+})
+
+function showSuccessPopup () {
+  Swal.fire({
+    title: '付款成功！',
+    text: '5秒後將返回首頁',
+    icon: 'success',
+    timer: 5000,
+    timerProgressBar: true,
+    showConfirmButton: false
+  })
+}
+</script>
 <template>
   <div class="position-relative d-flex">
     <div class="container d-flex flex-column" style="min-height: 100vh">
